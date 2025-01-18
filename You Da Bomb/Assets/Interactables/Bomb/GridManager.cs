@@ -1,0 +1,207 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.UIElements;
+using System.Runtime.CompilerServices;
+public class GridCell
+{
+    public Vector2Int Position { get; private set; }
+    public PuzzleBase Puzzle { get; set; }
+
+    public GridCell(int x, int y)
+    {
+        Position = new Vector2Int(x, y);
+        Puzzle = null;
+    }
+}
+
+public class GridManager : MonoBehaviour
+{
+    private GridCell[,] grid;
+    private GridCell[,] gridConstant;
+    private PuzzleFactory puzzleFactory;
+
+    [Header("Grid Sizing")]
+    [SerializeField] private int gridRows = 2;
+    [SerializeField] private int gridColumns = 2;
+    [SerializeField] private int gridRowsConstant = 1;
+    [SerializeField] private int gridColumnsConstant = 2;
+    [SerializeField] private float cellSpacing = 0.2f;
+
+    [Header("Grid Spawning")]
+    [SerializeField] private float puzzleSpawnRate = 5.0f; //How often puzzles spawn in seconds
+
+    private void Awake() //Initialize the grid
+    {
+        grid = new GridCell[gridRows, gridColumns];
+        gridConstant = new GridCell[gridRowsConstant, gridColumnsConstant];
+
+        for (int x = 0; x < gridRows; x++)
+        {
+            for (int y = 0; y < gridColumns; y++)
+            {
+                grid[x, y] = new GridCell(x, y);
+            }
+        }
+
+        for (int x = 0; x < gridRowsConstant; x++)
+        {
+            for (int y = 0; y < gridColumnsConstant; y++)
+            {
+                gridConstant[x, y] = new GridCell(x, y);
+            }
+        }
+    }
+
+    private void Start()
+    {
+        puzzleFactory = FindObjectOfType<PuzzleFactory>();
+        if (puzzleFactory == null)
+        {
+            Debug.LogError("PuzzleFactory not found in scene");
+            return;
+        }
+
+        StartCoroutine(SpawnPuzzles()); //Spawn puzzles in specified interval
+    }
+
+    private IEnumerator SpawnPuzzles()
+    {
+        while (true)
+        {
+            //Spawn puzzle, place on grid
+            PlacePuzzleInGrid();
+
+            yield return new WaitForSeconds(puzzleSpawnRate);
+        }
+    }
+
+    public void PlacePuzzleInGrid() //Called when adding new puzzle to grid
+    {
+        GameObject puzzleObject = puzzleFactory.FetchRandomPuzzle();
+        PuzzleBase puzzle = puzzleObject.GetComponent<PuzzleBase>();
+
+        if (puzzle == null)
+        {
+            return;
+        }
+
+        Vector2Int? placementPosition = FindPlacementForPuzzle(puzzle);
+
+        if (placementPosition.HasValue)
+        {
+            //Place the puzzle in the grid and set its position
+            PlacePuzzle(puzzle, placementPosition.Value);
+        }
+        else
+        {
+            //No spots available for puzzle
+            Destroy(puzzleObject);
+        }
+    }
+
+    private Vector2Int? FindPlacementForPuzzle(PuzzleBase puzzle) //Goes through grid cells, checks for valid
+    {
+        List<Vector2Int> possiblePositions = new List<Vector2Int>();
+
+        for (int x = 0; x <= gridColumns - puzzle.puzzleGridWidth; x++) //Width
+        {
+            for (int y = 0; y <= gridRows - puzzle.puzzleGridHeight; y++) //Height
+            {
+                possiblePositions.Add(new Vector2Int(x, y));
+            }
+        }
+
+        ShuffleList(possiblePositions); //Randomize spots
+
+        foreach (var position in possiblePositions)
+        {
+            if (CanPlacePuzzle(puzzle, position))
+            {
+                return position; //Return valid position
+            }
+        }
+
+        return null; //No spot found
+    }
+
+    private void ShuffleList<T>(List<T> list) //Shuffles list of positions for random placing
+    {
+        System.Random rng = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
+    private bool CanPlacePuzzle(PuzzleBase puzzle, Vector2Int position) //Returns bool for spot availability
+    {
+        //Check if puzzle fits in bounds and doesn't overlap
+        for (int x = 0; x < puzzle.puzzleGridHeight; x++)
+        {
+            for (int y = 0; y < puzzle.puzzleGridWidth; y++)
+            {
+                int gridX = position.x + x;
+                int gridY = position.y + y;
+
+                if (grid[gridX, gridY] != null && grid[gridX, gridY].Puzzle != null) //Cell is occupied
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true; //Can place puzzle
+    }
+
+    private void PlacePuzzle(PuzzleBase puzzle, Vector2Int position) //Assigns puzzle to found open cell
+    {
+        //Mark cells as occupied
+        for (int x = 0; x < puzzle.puzzleGridHeight; x++)
+        {
+            for (int y = 0; y < puzzle.puzzleGridWidth; y++)
+            {
+                grid[position.x + x, position.y + y].Puzzle = puzzle;
+            }
+        }
+
+        //Position puzzle in world space
+        Vector3 worldPosition = CalculateWorldPosition(position);
+        puzzle.transform.position = worldPosition;
+    }
+
+    private Vector3 CalculateWorldPosition(Vector2Int gridPosition) //Get coordinate based on cell assigned
+    {
+        //Convert grid coordinates to world coordinates
+        float cellSize = 1f; //Size of each grid cell
+        float xPosition = gridPosition.x * (cellSize + cellSpacing);
+        float yPosition = gridPosition.y * (cellSize + cellSpacing);
+        return new Vector3(xPosition, yPosition, 0);
+    }
+    private void OnDrawGizmos()
+    {
+        if (grid == null) return;
+
+        for (int x = 0; x < gridColumns; x++)
+        {
+            for (int y = 0; y < gridRows; y++)
+            {
+                GridCell cell = grid[x, y];
+
+                //Set Gizmo color based on whether the cell is occupied
+                Gizmos.color = (cell.Puzzle != null) ? Color.green : Color.red;
+
+                //Draw a wireframe cube for each grid cell
+                Vector3 cellPosition = new Vector3(x * (1 + cellSpacing), y * (1 + cellSpacing), 0);
+                Gizmos.DrawWireCube(cellPosition, Vector3.one);
+            }
+        }
+    }
+
+}
