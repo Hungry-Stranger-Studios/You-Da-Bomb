@@ -185,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.596875
+  orthographic size: 0.8881579
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 16
-  m_RefResolutionX: 100
-  m_RefResolutionY: 50
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
   m_CropFrame: 0
   m_GridSnapping: 1
   m_FilterMode: 0
@@ -338,11 +338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: gridRows
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: cellSpacing
-      value: 0.2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: gridColumns
@@ -350,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: puzzleSpawnRate
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: gridRowsConstant
