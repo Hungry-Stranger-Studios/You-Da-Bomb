@@ -7,9 +7,9 @@ public class ClearScreenPuzzle : PuzzleBase
     private void Awake()
     {
         puzzleName = "Clear Screen";
-        puzzleGridHeight = 2;
+        puzzleGridHeight = 1;
         puzzleGridWidth = 1;
-        puzzleType = "Constant";
+        puzzleType = "Main"; //Label Constant for separate "Constant" grid spawning
     }
 
     public override void Activate()
