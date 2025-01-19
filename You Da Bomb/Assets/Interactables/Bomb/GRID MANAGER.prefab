@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2bc9de8828755479348efcd9ce3c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridRows: 3
+  gridRows: 5
   gridColumns: 3
+  gridRowsConstant: 1
+  gridColumnsConstant: 2
+  cellSpacing: 0.2
   puzzleSpawnRate: 5

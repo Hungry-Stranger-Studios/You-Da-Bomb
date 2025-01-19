@@ -25,29 +25,30 @@ public class GridManager : MonoBehaviour
     [Header("Grid Sizing")]
     [SerializeField] private int gridRows = 2;
     [SerializeField] private int gridColumns = 2;
-    [SerializeField] private int gridRowsConstant = 1;
-    [SerializeField] private int gridColumnsConstant = 2;
+    [SerializeField] private int gridRowsConstant = 2;
+    [SerializeField] private int gridColumnsConstant = 1;
     [SerializeField] private float cellSpacing = 0.2f;
+    private float cellSize = 1f;
 
     [Header("Grid Spawning")]
     [SerializeField] private float puzzleSpawnRate = 5.0f; //How often puzzles spawn in seconds
 
     private void Awake() //Initialize the grid
     {
-        grid = new GridCell[gridRows, gridColumns];
-        gridConstant = new GridCell[gridRowsConstant, gridColumnsConstant];
+        grid = new GridCell[gridColumns, gridRows];
+        gridConstant = new GridCell[gridColumnsConstant, gridRowsConstant];
 
-        for (int x = 0; x < gridRows; x++)
+        for (int x = 0; x < gridColumns; x++)
         {
-            for (int y = 0; y < gridColumns; y++)
+            for (int y = 0; y < gridRows; y++)
             {
                 grid[x, y] = new GridCell(x, y);
             }
         }
 
-        for (int x = 0; x < gridRowsConstant; x++)
+        for (int x = 0; x < gridColumnsConstant; x++)
         {
-            for (int y = 0; y < gridColumnsConstant; y++)
+            for (int y = 0; y < gridRowsConstant; y++)
             {
                 gridConstant[x, y] = new GridCell(x, y);
             }
@@ -87,17 +88,35 @@ public class GridManager : MonoBehaviour
             return;
         }
 
-        Vector2Int? placementPosition = FindPlacementForPuzzle(puzzle);
-
-        if (placementPosition.HasValue)
+        if (puzzle.puzzleType == "Constant")
         {
-            //Place the puzzle in the grid and set its position
-            PlacePuzzle(puzzle, placementPosition.Value);
+            //Place in the constant grid
+            Vector2Int? placementPosition = FindPlacementForConstantPuzzle(puzzle);
+
+            if (placementPosition.HasValue)
+            {
+                PlacePuzzleInConstantGrid(puzzle, placementPosition.Value);
+            }
+            else
+            {
+                //No spots available for constant
+                Destroy(puzzleObject);
+            }
         }
         else
         {
-            //No spots available for puzzle
-            Destroy(puzzleObject);
+            //Place in the main grid
+            Vector2Int? placementPosition = FindPlacementForPuzzle(puzzle);
+
+            if (placementPosition.HasValue)
+            {
+                PlacePuzzle(puzzle, placementPosition.Value);
+            }
+            else
+            {
+                //No spots available for normal
+                Destroy(puzzleObject);
+            }
         }
     }
 
@@ -143,9 +162,9 @@ public class GridManager : MonoBehaviour
     private bool CanPlacePuzzle(PuzzleBase puzzle, Vector2Int position) //Returns bool for spot availability
     {
         //Check if puzzle fits in bounds and doesn't overlap
-        for (int x = 0; x < puzzle.puzzleGridHeight; x++)
+        for (int x = 0; x < puzzle.puzzleGridWidth; x++)
         {
-            for (int y = 0; y < puzzle.puzzleGridWidth; y++)
+            for (int y = 0; y < puzzle.puzzleGridHeight; y++)
             {
                 int gridX = position.x + x;
                 int gridY = position.y + y;
@@ -163,9 +182,9 @@ public class GridManager : MonoBehaviour
     private void PlacePuzzle(PuzzleBase puzzle, Vector2Int position) //Assigns puzzle to found open cell
     {
         //Mark cells as occupied
-        for (int x = 0; x < puzzle.puzzleGridHeight; x++)
+        for (int x = 0; x < puzzle.puzzleGridWidth; x++)
         {
-            for (int y = 0; y < puzzle.puzzleGridWidth; y++)
+            for (int y = 0; y < puzzle.puzzleGridHeight; y++)
             {
                 grid[position.x + x, position.y + y].Puzzle = puzzle;
             }
@@ -179,29 +198,97 @@ public class GridManager : MonoBehaviour
     private Vector3 CalculateWorldPosition(Vector2Int gridPosition) //Get coordinate based on cell assigned
     {
         //Convert grid coordinates to world coordinates
-        float cellSize = 1f; //Size of each grid cell
         float xPosition = gridPosition.x * (cellSize + cellSpacing);
         float yPosition = gridPosition.y * (cellSize + cellSpacing);
         return new Vector3(xPosition, yPosition, 0);
     }
+
+    private Vector2Int? FindPlacementForConstantPuzzle(PuzzleBase puzzle)
+    {
+        for (int x = 0; x < gridColumnsConstant - puzzle.puzzleGridWidth + 1; x++)
+        {
+            for (int y = 0; y < gridRowsConstant - puzzle.puzzleGridHeight + 1; y++)
+            {
+                if (CanPlaceInConstantGrid(puzzle, new Vector2Int(x, y)))
+                {
+                    return new Vector2Int(x, y);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private bool CanPlaceInConstantGrid(PuzzleBase puzzle, Vector2Int position)
+    {
+        for (int x = 0; x < puzzle.puzzleGridWidth; x++)
+        {
+            for (int y = 0; y < puzzle.puzzleGridHeight; y++)
+            {
+                int gridX = position.x + x;
+                int gridY = position.y + y;
+
+                Debug.Log($"{gridX} and {gridY}");
+
+                if (gridConstant[gridX, gridY] != null && gridConstant[gridX, gridY].Puzzle != null)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void PlacePuzzleInConstantGrid(PuzzleBase puzzle, Vector2Int position)
+    {
+        for (int x = 0; x < puzzle.puzzleGridWidth; x++)
+        {
+            for (int y = 0; y < puzzle.puzzleGridHeight; y++)
+            {
+                gridConstant[position.x + x, position.y + y].Puzzle = puzzle;
+            }
+        }
+
+        Vector3 worldPosition = CalculateWorldPositionForConstantGrid(position);
+        puzzle.transform.position = worldPosition;
+    }
+
+    private Vector3 CalculateWorldPositionForConstantGrid(Vector2Int gridPosition)
+    {
+        float xPosition = gridPosition.x * (cellSize + cellSpacing);
+        float yPosition = -(gridRowsConstant * (cellSize + cellSpacing)) + gridPosition.y * (cellSize + cellSpacing); //Offset below main grid
+        return new Vector3(xPosition, yPosition, 0);
+    }
+
     private void OnDrawGizmos()
     {
         if (grid == null) return;
 
+        //Main grid
         for (int x = 0; x < gridColumns; x++)
         {
             for (int y = 0; y < gridRows; y++)
             {
                 GridCell cell = grid[x, y];
-
-                //Set Gizmo color based on whether the cell is occupied
                 Gizmos.color = (cell.Puzzle != null) ? Color.green : Color.red;
 
-                //Draw a wireframe cube for each grid cell
-                Vector3 cellPosition = new Vector3(x * (1 + cellSpacing), y * (1 + cellSpacing), 0);
+                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), y * (cellSize + cellSpacing), 0);
+                Gizmos.DrawWireCube(cellPosition, Vector3.one);
+            }
+        }
+
+        //Constant grid
+        for (int x = 0; x < gridColumnsConstant; x++)
+        {
+            for (int y = 0; y < gridRowsConstant; y++)
+            {
+                GridCell cell = gridConstant[x, y];
+                Gizmos.color = (cell.Puzzle != null) ? Color.blue : Color.yellow;
+
+                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), -(gridRowsConstant * (cellSize + cellSpacing)) + y * (cellSize + cellSpacing), 0);
                 Gizmos.DrawWireCube(cellPosition, Vector3.one);
             }
         }
     }
-
 }

@@ -7,9 +7,9 @@ public class ClearScreenPuzzle : PuzzleBase
     private void Awake()
     {
         puzzleName = "Clear Screen";
-        puzzleGridHeight = 1;
+        puzzleGridHeight = 2;
         puzzleGridWidth = 1;
-        puzzleType = "Main";
+        puzzleType = "Constant";
     }
 
     public override void Activate()
