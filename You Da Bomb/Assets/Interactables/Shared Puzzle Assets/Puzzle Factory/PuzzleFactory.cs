@@ -16,7 +16,7 @@ public class PuzzleFactory : MonoBehaviour
             return null;
         }
 
-        int random = Random.Range(0,puzzlePrefabs.Count - 1);
+        int random = Random.Range(0, puzzlePrefabs.Count);
         GameObject selectedPrefab = puzzlePrefabs[random];
 
         return Instantiate(selectedPrefab);

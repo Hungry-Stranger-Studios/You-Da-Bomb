@@ -38,12 +38,6 @@ public class NumberCountPuzzle : PuzzleBase
         canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
-        //Make EventSystem
-        GameObject eventSystemGO = new GameObject("EventSystem");
-        eventSystemGO.AddComponent<EventSystem>();
-        eventSystemGO.transform.SetParent(this.transform);
-        eventSystemGO.AddComponent<StandaloneInputModule>();
-
         //Make Grid
         GameObject gridGO = Instantiate(gridPrefab, canvas.transform);
         gridTransform = gridGO.transform;
