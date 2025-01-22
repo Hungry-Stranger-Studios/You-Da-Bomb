@@ -7,7 +7,6 @@ public class PuzzleFactory : MonoBehaviour
     [Header("Puzzle Prefabs")]
     [SerializeField] private List<GameObject> puzzlePrefabs = new List<GameObject>();
 
-    
     public GameObject FetchRandomPuzzle()
     {
         if (puzzlePrefabs.Count == 0)
