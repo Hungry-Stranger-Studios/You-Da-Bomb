@@ -27,7 +27,6 @@ public class ClearScreenPuzzle : PuzzleBase
     public override void Activate()
     {
         base.Activate();
-        Debug.Log($"{puzzleName} puzzle started!");
 
         int random = Random.Range(1, maxObjects);
         for (int i = 0; i < random; i++)
@@ -39,7 +38,6 @@ public class ClearScreenPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
-        Debug.Log($"{puzzleName} puzzle solved!");
         foreach (var obj in spawnedObjects)
         {
             Destroy(obj);
