@@ -40,7 +40,8 @@ public class Snap : MonoBehaviour
 
         if (closestSnapPoint != null && closestDistance <= snapRange)
         {
-            draggable.transform.position = closestSnapPoint.position;
+            draggable.transform.position = new Vector3(closestSnapPoint.position.x, closestSnapPoint.position.y, closestSnapPoint.position.z - 0.1f);
+            Debug.Log($"Snap Point: {closestSnapPoint.position} and Draggable: {draggable.transform.position}");
         }
 
     }
