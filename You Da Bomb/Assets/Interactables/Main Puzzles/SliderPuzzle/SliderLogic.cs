@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,42 +8,45 @@ public class SliderLogic : MonoBehaviour
     [SerializeField] private TextMeshProUGUI slidertext;
     [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private GameObject bulb;
-
     public int Goal;
-    // Start is called before the first frame update
+
+    private float correctValueStartTime;
+    private bool isOnCorrectValue = false;
+    public float requiredHoldTime = 1f; 
+
     void Start()
     {
-
         bulb.TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer);
         Goal = Random.Range(0, 10);
         goalText.text = Goal.ToString();
 
- 
         slider.onValueChanged.AddListener((v) =>
         {
             slidertext.text = v.ToString("0");
 
-
             if ((int)v == Goal)
             {
-                StartCoroutine(wait());
-                Debug.Log("SUCCESS!");
-                renderer.color = Color.green;
+                if (!isOnCorrectValue)
+                {
+                    correctValueStartTime = Time.time;
+                    isOnCorrectValue = true;
+                }
             }
             else
             {
                 renderer.color = Color.red;
-                StopCoroutine(wait());
+                isOnCorrectValue = false;
             }
         });
     }
 
-    private IEnumerator wait()
+    void Update()
     {
-        yield return new WaitForSeconds(1);
+        if (isOnCorrectValue && Time.time - correctValueStartTime >= requiredHoldTime)
+        {
+            Debug.Log("SUCCESS!");
+            bulb.GetComponent<SpriteRenderer>().color = Color.green;
+            isOnCorrectValue = false; 
+        }
     }
-
-
-
-    
 }
