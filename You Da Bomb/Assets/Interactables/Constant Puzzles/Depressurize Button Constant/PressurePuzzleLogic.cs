@@ -10,18 +10,22 @@ public class PressurePuzzleLogic : MonoBehaviour
     public float Pressure, MaxPressure;
     public float decAmount;
     public float ChargeRate;
+    public float StartTime;
 
-    private Coroutine recharge;
 
-
-    public void Start()
+    public void Awake()
     {
-       
-        PressureBar.fillAmount = 0;
-        
-
+        StartTime = Time.time;
     }
 
+    public void Update()
+    {
+        if (Time.time - StartTime > .5f)
+        {
+            IncreasePressure();
+            StartTime = Time.time;
+        }
+    }
     public void DecreasePressure()
     {
         Debug.Log("Pressure Decreased");
@@ -34,28 +38,18 @@ public class PressurePuzzleLogic : MonoBehaviour
         }
         PressureBar.fillAmount = Pressure / MaxPressure;
 
-        if(recharge != null)
-        {
-            StopCoroutine(recharge);
-        }
-        recharge = StartCoroutine(IncreasePressure());
-
     }
 
-    private IEnumerator IncreasePressure()
+    private void IncreasePressure()
     {
-        yield return new WaitForSeconds(.5f);
-
-        while(Pressure < MaxPressure)
-        {
+ 
             Pressure += ChargeRate / 10f;
             if(Pressure > MaxPressure)
             {
                 Pressure = MaxPressure;
+                Debug.Log("Game Over");
             }
-            PressureBar.fillAmount = Pressure / MaxPressure;
-            yield return new WaitForSeconds(.1f);
-        }
+            PressureBar.fillAmount = Pressure / MaxPressure;       
     }
 
     
