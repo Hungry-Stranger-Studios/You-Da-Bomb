@@ -8,18 +8,16 @@ public class ButtonHoldHandler : MonoBehaviour, IPointerDownHandler, IPointerUpH
 {
     public float holdBuffer = 0.2f;
 
-    public float holdThreshold;
+    public int holdThreshold;
     public float holdDuration = 0f;
     private bool isHeld = false;
-    public static float currentHoldTime;
+    //public static float currentHoldTime;
 
     public event System.Action OnHoldComplete;
-
-    private void Start()
+    private void Awake()
     {
         holdThreshold = Random.Range(2, 4);
     }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         isHeld = true;
@@ -41,9 +39,9 @@ public class ButtonHoldHandler : MonoBehaviour, IPointerDownHandler, IPointerUpH
         if (isHeld)
         {
             holdDuration += Time.deltaTime;
-            currentHoldTime = holdDuration;
+            //currentHoldTime = holdDuration; //Update static for access in HoldButtonPuzzle
         }
     }
 
-    public float getHoldDuration() { return holdDuration; }
+    public float getHoldDuration() { return holdThreshold; }
 }

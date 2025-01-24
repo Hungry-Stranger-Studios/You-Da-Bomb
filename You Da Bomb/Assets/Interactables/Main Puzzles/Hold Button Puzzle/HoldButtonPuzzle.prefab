@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 5026860615453139675, guid: 8992757401510d04a8ea9d0ce159592f, type: 3}
+  textPrefab: {fileID: 7477510776617990084, guid: d3d380a4c7afe5244a8e564176cc2020, type: 3}
   holdBuffer: 0.2

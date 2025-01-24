@@ -10,6 +10,7 @@ public class HoldButtonPuzzle : PuzzleBase
 {
     [Header("Prefabs")]
     [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private GameObject textPrefab;
 
     [Header("Button Stats")]
     [SerializeField] private float holdBuffer = 0.2f;
@@ -41,11 +42,20 @@ public class HoldButtonPuzzle : PuzzleBase
         //Make button
         GameObject buttonObject = Instantiate(buttonPrefab, puzzleCanvas.transform);
         ButtonHoldHandler buttonHandler = buttonObject.AddComponent<ButtonHoldHandler>();
-        buttonHandler.holdBuffer = holdBuffer;
+        buttonHandler.holdBuffer = holdBuffer; //Update hold time in handling to adjust range allowed
 
         //Adjust button position
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
         buttonRect.anchoredPosition = new Vector2(0f, -10f);
+
+        //Make text
+        GameObject textObject = Instantiate(textPrefab, puzzleCanvas.transform);
+        float holdDuration = buttonHandler.getHoldDuration(); //Retrieve holdDuration 'rolled' from ButtonHandler
+        textObject.GetComponent<TextMeshProUGUI>().text = holdDuration.ToString();
+
+        //Adjust text position
+        RectTransform textRect = textObject.GetComponent<RectTransform>();
+        textRect.anchoredPosition = new Vector2(0f, 15f);
 
         //Subscribe to button event
         buttonHandler.OnHoldComplete += OnHoldComplete;
@@ -56,16 +66,6 @@ public class HoldButtonPuzzle : PuzzleBase
     public override void Activate()
     {
         base.Activate();
-    }
-
-    private void Update()
-    {
-        /*
-        if (currentTimeText != null)
-        {
-            //currentTimeText.text = ButtonHoldHandler.currentHoldTime.ToString();
-        }
-        */
     }
 
     private void OnHoldComplete()
