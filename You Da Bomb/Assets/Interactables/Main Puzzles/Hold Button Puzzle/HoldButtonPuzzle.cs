@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class HoldButtonPuzzle : PuzzleBase
 {
@@ -16,6 +17,9 @@ public class HoldButtonPuzzle : PuzzleBase
     [SerializeField] private float holdBuffer = 0.2f;
 
     private Canvas puzzleCanvas;
+    private GameObject textDurationObject;
+    private GameObject textCurrentObject;
+    private ButtonHoldHandler buttonHandler;
 
     private void Awake()
     {
@@ -41,26 +45,39 @@ public class HoldButtonPuzzle : PuzzleBase
 
         //Make button
         GameObject buttonObject = Instantiate(buttonPrefab, puzzleCanvas.transform);
-        ButtonHoldHandler buttonHandler = buttonObject.AddComponent<ButtonHoldHandler>();
-        buttonHandler.holdBuffer = holdBuffer; //Update hold time in handling to adjust range allowed
+        buttonHandler = buttonObject.AddComponent<ButtonHoldHandler>();
+        buttonHandler.setHoldBuffer(holdBuffer); //Update hold time in handling to adjust range allowed
 
         //Adjust button position
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
-        buttonRect.anchoredPosition = new Vector2(0f, -10f);
+        buttonRect.anchoredPosition = new Vector2(0f, -15f);
 
-        //Make text
-        GameObject textObject = Instantiate(textPrefab, puzzleCanvas.transform);
-        float holdDuration = buttonHandler.getHoldDuration(); //Retrieve holdDuration 'rolled' from ButtonHandler
-        textObject.GetComponent<TextMeshProUGUI>().text = holdDuration.ToString();
+        //Make threshold text
+        textDurationObject = Instantiate(textPrefab, puzzleCanvas.transform);
+        float holdThreshold = buttonHandler.getHoldThreshold(); //Retrieve holdDuration 'rolled' from ButtonHandler
+        textDurationObject.GetComponent<TextMeshProUGUI>().text = holdThreshold.ToString();
 
         //Adjust text position
-        RectTransform textRect = textObject.GetComponent<RectTransform>();
-        textRect.anchoredPosition = new Vector2(0f, 15f);
+        RectTransform textDureationRect = textDurationObject.GetComponent<RectTransform>();
+        textDureationRect.anchoredPosition = new Vector2(0f, 25f);
+
+        textCurrentObject = Instantiate(textPrefab, puzzleCanvas.transform);
+
+        //Adjust text position
+        RectTransform textCurrentRect = textCurrentObject.GetComponent<RectTransform>();
+        textCurrentRect.anchoredPosition = new Vector2(0f, 7f);
 
         //Subscribe to button event
         buttonHandler.OnHoldComplete += OnHoldComplete;
 
         Activate();
+    }
+
+    private void Update()
+    {
+        float currentDuration = buttonHandler.getCurrentHoldTime(); //Fetch current hold time from buttonHandler
+        float currentDurationRounded = (float)Math.Round(currentDuration, 2);
+        textCurrentObject.GetComponent<TextMeshProUGUI>().text = currentDurationRounded.ToString();
     }
 
     public override void Activate()

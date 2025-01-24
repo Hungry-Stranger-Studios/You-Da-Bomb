@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 public class ButtonHoldHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public float holdBuffer = 0.2f;
+    private float holdBuffer = 0.2f;
 
-    public int holdThreshold;
-    public float holdDuration = 0f;
+    private int holdThreshold;
+    private float holdDuration = 0f;
     private bool isHeld = false;
-    //public static float currentHoldTime;
+    private float currentHoldTime;
 
     public event System.Action OnHoldComplete;
     private void Awake()
@@ -39,9 +39,14 @@ public class ButtonHoldHandler : MonoBehaviour, IPointerDownHandler, IPointerUpH
         if (isHeld)
         {
             holdDuration += Time.deltaTime;
-            //currentHoldTime = holdDuration; //Update static for access in HoldButtonPuzzle
+            currentHoldTime = holdDuration; //Update static for access in HoldButtonPuzzle
         }
     }
 
-    public float getHoldDuration() { return holdThreshold; }
+    public float getHoldThreshold() { return holdThreshold; }
+    public float getCurrentHoldTime() { return currentHoldTime; }
+    public float getHoldBuffer() { return holdBuffer; }
+    public void setHoldBuffer(float holdBuffer) { this.holdBuffer = holdBuffer; }
+    public void setCurrentHoldTime(float currentHoldTime) { this.currentHoldTime = currentHoldTime; }
+    public void setHoldThreshold(int holdThreshold) { this.holdThreshold = holdThreshold; }
 }

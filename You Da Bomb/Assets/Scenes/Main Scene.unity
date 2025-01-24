@@ -122,6 +122,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &441123551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999061371936704728, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: m_Name
+      value: PuzzleFactory
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 394c947c81c40084a9fc24989130926b, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +394,10 @@ PrefabInstance:
       value: GRID MANAGER
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
+      propertyPath: cellSpacing
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: puzzleSpawnRate
       value: 1
       objectReference: {fileID: 0}
@@ -495,71 +556,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1076043712
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716316189460334777, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999061371936704728, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: m_Name
-      value: PuzzleFactory
-      objectReference: {fileID: 0}
-    - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: puzzlePrefabs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
-      propertyPath: puzzlePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 8598643375270441473, guid: 9d446ee0247dd2542ae028d02c0b1be5, type: 3}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 394c947c81c40084a9fc24989130926b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -567,5 +563,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 534040136}
-  - {fileID: 1076043712}
   - {fileID: 946515925}
+  - {fileID: 441123551}
