@@ -27,6 +27,15 @@ public class CursorSprite : MonoBehaviour
         {
             PlayClickAnimation();
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            HoldClickAnimation(true); // Freeze on 3rd sprite
+        }
+        else
+        {
+            HoldClickAnimation(false); // Resume animation
+        }
     }
 
     private void SmoothFollowCursor()
@@ -41,6 +50,11 @@ public class CursorSprite : MonoBehaviour
     private void PlayClickAnimation()
     {
         animator.SetTrigger("Click");  
+    }
+
+    private void HoldClickAnimation(bool isHeld)
+    {
+        animator.SetBool("isHeld", isHeld);
     }
 
     public void EndClickAnimation()

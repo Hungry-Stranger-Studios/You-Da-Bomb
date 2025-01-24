@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CursorClick
+  m_Name: CursorHold
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -190435333, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - time: 0.05
-      value: {fileID: -842546489, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - time: 0.1
       value: {fileID: 100325262, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - time: 0.15
-      value: {fileID: 1351978613, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - time: 0.2
-      value: {fileID: -109995632, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,17 +44,13 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -190435333, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - {fileID: -842546489, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
     - {fileID: 100325262, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - {fileID: 1351978613, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
-    - {fileID: -109995632, guid: e2b24c8899809b6429fd3b4a1c0d38e6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.21666667
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,11 +69,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.2
-    functionName: EndClickAnimation
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
