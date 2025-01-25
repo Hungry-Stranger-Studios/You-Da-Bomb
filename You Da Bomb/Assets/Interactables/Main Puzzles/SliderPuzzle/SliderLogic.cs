@@ -17,7 +17,7 @@ public class SliderLogic : MonoBehaviour
     void Start()
     {
         bulb.TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer);
-        Goal = Random.Range(0, 10);
+        Goal = Random.Range(1, 10);
         goalText.text = Goal.ToString();
 
         slider.onValueChanged.AddListener((v) =>
@@ -30,6 +30,7 @@ public class SliderLogic : MonoBehaviour
                 {
                     correctValueStartTime = Time.time;
                     isOnCorrectValue = true;
+                    bulb.GetComponent<SpriteRenderer>().color = Color.green;
                 }
             }
             else
@@ -45,8 +46,10 @@ public class SliderLogic : MonoBehaviour
         if (isOnCorrectValue && Time.time - correctValueStartTime >= requiredHoldTime)
         {
             Debug.Log("SUCCESS!");
-            bulb.GetComponent<SpriteRenderer>().color = Color.green;
-            isOnCorrectValue = false; 
+            //bulb.GetComponent<SpriteRenderer>().color = Color.green;
+            isOnCorrectValue = false;
+            Destroy(GameObject.FindWithTag("SliderPuzzle"));
+
         }
     }
 }

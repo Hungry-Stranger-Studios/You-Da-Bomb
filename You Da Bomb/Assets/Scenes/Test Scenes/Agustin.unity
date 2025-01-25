@@ -530,6 +530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SliderPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 6769075565518105291, guid: 713a91e48c6e045429bf9c02f45dfd62, type: 3}
+      propertyPath: m_TagString
+      value: SliderPuzzle
+      objectReference: {fileID: 0}
     - target: {fileID: 6937528507104971316, guid: 713a91e48c6e045429bf9c02f45dfd62, type: 3}
       propertyPath: m_SizeDelta.x
       value: 41.0657
