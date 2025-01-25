@@ -160,6 +160,7 @@ public class CodeTypingPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        StressManagement.Instance.AdjustStress(-5.0f);
         Destroy(this.gameObject);
     }
 }
