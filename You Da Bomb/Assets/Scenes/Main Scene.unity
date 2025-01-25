@@ -337,6 +337,10 @@ PrefabInstance:
       value: GRID MANAGER
       objectReference: {fileID: 0}
     - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
+      propertyPath: cellSpacing
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238473599874497441, guid: 33dfe14c8a0cd8b469b9de39a91f2629, type: 3}
       propertyPath: puzzleSpawnRate
       value: 1
       objectReference: {fileID: 0}
@@ -549,12 +553,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
       propertyPath: puzzlePrefabs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
       propertyPath: puzzlePrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 8598643375270441473, guid: 9d446ee0247dd2542ae028d02c0b1be5, type: 3}
+    - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: puzzlePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6093648409590851590, guid: b36e6ea91c6f77747ae70046ef2126ee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

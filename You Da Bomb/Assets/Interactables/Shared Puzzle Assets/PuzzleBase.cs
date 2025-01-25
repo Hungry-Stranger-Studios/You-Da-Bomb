@@ -10,11 +10,12 @@ public abstract class PuzzleBase : MonoBehaviour
     public int puzzleGridWidth { get; protected set; }
     public virtual void Activate()
     {
-        Debug.Log($"{puzzleName} activated");
+        //Debug.Log($"{puzzleName} activated");    <-- ADD ANIMATION TO PUZZLE'S ENTRY
+
     }
 
     public virtual void Solved()
     {
-        Debug.Log($"{puzzleName} solved");
+        //Debug.Log($"{puzzleName} solved");    <-- ADD ANIMATION TO PUZZLE'S EXIT
     }
 }
