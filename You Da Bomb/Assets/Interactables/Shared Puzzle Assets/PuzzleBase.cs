@@ -8,14 +8,6 @@ public abstract class PuzzleBase : MonoBehaviour
     public string puzzleType { get; protected set; }
     public int puzzleGridHeight { get; protected set; }
     public int puzzleGridWidth { get; protected set; }
-    public virtual void Activate()
-    {
-        //Debug.Log($"{puzzleName} activated");    <-- ADD ANIMATION TO PUZZLE'S ENTRY
-
-    }
-
-    public virtual void Solved()
-    {
-        //Debug.Log($"{puzzleName} solved");    <-- ADD ANIMATION TO PUZZLE'S EXIT
-    }
+    public virtual void Activate() { /*ANIMATION FOR STARTING*/}
+    public virtual void Solved() { /*ANIMATION FOR ENDING*/}
 }

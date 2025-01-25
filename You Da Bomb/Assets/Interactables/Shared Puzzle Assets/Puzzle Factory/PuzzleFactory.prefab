@@ -47,3 +47,4 @@ MonoBehaviour:
   puzzlePrefabs:
   - {fileID: 8598643375270441473, guid: 9d446ee0247dd2542ae028d02c0b1be5, type: 3}
   - {fileID: 6093648409590851590, guid: b36e6ea91c6f77747ae70046ef2126ee, type: 3}
+  - {fileID: 3487124141853928923, guid: 12c36ee8319fcf04bba6ac419da9c209, type: 3}
