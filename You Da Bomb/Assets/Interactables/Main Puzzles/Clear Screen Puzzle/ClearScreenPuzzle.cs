@@ -44,6 +44,7 @@ public class ClearScreenPuzzle : PuzzleBase
         }
         spawnedObjects.Clear();
 
+        StressManagement.Instance.AdjustStress(-5.0f);
         Destroy(this.gameObject);
     }
 
