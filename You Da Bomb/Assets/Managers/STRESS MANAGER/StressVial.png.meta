@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:You Da Bomb/Assets/UI/Border 1.png.meta
-guid: 8ed32cfa39238f84b9b2bcc4971937ea
-========
 guid: 13ff50c3f9d92b74986dc297561d2a48
->>>>>>>> Stashed changes:You Da Bomb/Assets/UI/Cursor/StressVial.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,11 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<<< Updated upstream:You Da Bomb/Assets/UI/Border 1.png.meta
-  spritePixelsToUnits: 100
-========
   spritePixelsToUnits: 32
->>>>>>>> Stashed changes:You Da Bomb/Assets/UI/Cursor/StressVial.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1

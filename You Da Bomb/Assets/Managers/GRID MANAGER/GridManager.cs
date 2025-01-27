@@ -16,6 +16,8 @@ public class GridCell
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance { get; private set; }
+
     private GridCell[,] grid;
     private GridCell[,] gridConstant;
     private PuzzleFactory puzzleFactory;
@@ -31,8 +33,20 @@ public class GridManager : MonoBehaviour
     [Header("Grid Spawning")]
     [SerializeField] private float puzzleSpawnRate = 5.0f; //How often puzzles spawn in seconds
 
+    private int puzzleCount = 0;
+
+    public int getPuzzleCount() { return puzzleCount; }
+
     private void Awake() //Initialize the grid
     {
+        if (Instance != null && Instance != this) //Only one grid manager
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         grid = new GridCell[gridColumns, gridRows];
         gridConstant = new GridCell[gridColumnsConstant, gridRowsConstant];
 
@@ -185,6 +199,7 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < puzzle.puzzleGridHeight; y++)
             {
                 grid[position.x + x, position.y + y].Puzzle = puzzle;
+                puzzleCount++;
             }
         }
 
