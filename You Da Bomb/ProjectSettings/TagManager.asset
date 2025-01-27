@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SliderPuzzle
+  - Button1
+  - Button2
+  - Button3
   layers:
   - Default
   - TransparentFX
