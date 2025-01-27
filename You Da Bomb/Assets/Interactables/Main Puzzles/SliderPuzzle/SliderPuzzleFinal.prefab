@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.77, y: -0.75}
+  m_AnchoredPosition: {x: 10, y: 10}
   m_SizeDelta: {x: 155.68225, y: 79.07559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6458068471451130473
@@ -798,74 +798,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5560753682429854715
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7405210342068163156}
-  - component: {fileID: 5016252746644422296}
-  - component: {fileID: 8785140129804500028}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7405210342068163156
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560753682429854715}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0036159416}
-  m_LocalScale: {x: 0.044779733, y: 0.044779733, z: 0.044779733}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6221915136212069626}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5016252746644422296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560753682429854715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!114 &8785140129804500028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560753682429854715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &5884462789733694447
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +845,7 @@ GameObject:
   - component: {fileID: 6221915136212069626}
   - component: {fileID: 8215036437766659497}
   - component: {fileID: 7081236590866618279}
+  - component: {fileID: 823090095820991513}
   m_Layer: 0
   m_Name: SliderPuzzleFinal
   m_TagString: SliderPuzzle
@@ -929,14 +862,13 @@ Transform:
   m_GameObject: {fileID: 6276102252857204193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0.08074951}
+  m_LocalPosition: {x: 0, y: 0, z: -0.08074951}
   m_LocalScale: {x: 22.331532, y: 22.331532, z: 22.331532}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6301839827881980873}
   - {fileID: 3056982388087858775}
   - {fileID: 5360447704240693660}
-  - {fileID: 7405210342068163156}
   - {fileID: 4405126803546676153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1004,6 +936,18 @@ SortingGroup:
   m_SortingLayer: -1
   m_SortingOrder: 2
   m_SortAtRoot: 0
+--- !u!114 &823090095820991513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276102252857204193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e308385ae7a3eb24c829c9b6089fd895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6910214945807011889
 GameObject:
   m_ObjectHideFlags: 0
