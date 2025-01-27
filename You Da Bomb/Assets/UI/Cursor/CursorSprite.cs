@@ -30,11 +30,11 @@ public class CursorSprite : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            HoldClickAnimation(true); // Freeze on 3rd sprite
+            HoldClickAnimation(true);
         }
         else
         {
-            HoldClickAnimation(false); // Resume animation
+            HoldClickAnimation(false);
         }
     }
 

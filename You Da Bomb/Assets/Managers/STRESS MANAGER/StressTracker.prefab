@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stressLevel: 1
   maxStressLevel: 100
-  timeToIncrease: 0.02
+  timeToIncrease: 1
   puzzleScaleEffect: 3
   stressFillImage: {fileID: 4225031283839277781}
   fillSmoothSpeed: 2
