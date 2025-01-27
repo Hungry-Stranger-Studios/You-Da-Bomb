@@ -388,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 976113855894634994}
   - component: {fileID: 4557783774945193615}
+  - component: {fileID: -2665423122857390326}
   m_Layer: 0
   m_Name: DragDropPuzzle
   m_TagString: Untagged
@@ -463,6 +464,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2665423122857390326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179629590416498625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0cf65ab9f4224785cc0cab0690a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2859287308826877950
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +599,9 @@ MonoBehaviour:
   RedBlock: {fileID: 7106998514411543780}
   BlueBlock: {fileID: 7452652664496222543}
   GreenBlock: {fileID: 5747429533513738361}
+  S1: {fileID: 0}
+  S2: {fileID: 0}
+  S3: {fileID: 0}
   RedItem: {fileID: 4401211037280623952}
   SpawnPoint: 0
 --- !u!1 &4401211037280623952

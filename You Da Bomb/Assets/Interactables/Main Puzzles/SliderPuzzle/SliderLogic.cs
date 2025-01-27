@@ -2,12 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SliderLogic : PuzzleBase
+public class SliderLogic : MonoBehaviour  
 {
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI slidertext;
     [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private GameObject bulb;
+
+    [SerializeField] private Test sliderPuzzleMain;
+    
+    
     public int Goal;
 
     private float correctValueStartTime;
@@ -16,6 +20,7 @@ public class SliderLogic : PuzzleBase
 
     void Start()
     {
+        
         bulb.TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer);
         Goal = Random.Range(1, 10);
         goalText.text = Goal.ToString();
@@ -45,8 +50,9 @@ public class SliderLogic : PuzzleBase
     {
         if (isOnCorrectValue && Time.time - correctValueStartTime >= requiredHoldTime)
         {
+            
+            sliderPuzzleMain.Solved();
             Debug.Log("SUCCESS!");
-            Solved();
             isOnCorrectValue = false;
             
             

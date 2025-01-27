@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SnapManager : MonoBehaviour
 {
+    [SerializeField] private DDTest DragDropMain;
     public List<Snap> snaps;
     private bool hasWon = false;
 
@@ -22,6 +23,7 @@ public class SnapManager : MonoBehaviour
                 return;
             }
         }
+        DragDropMain.Solved();
         hasWon = true;
         Debug.Log("SUCCESS");
     }

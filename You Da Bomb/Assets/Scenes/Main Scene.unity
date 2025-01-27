@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
       propertyPath: puzzlePrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 6276102252857204193, guid: f4af56ac92eae9f44a68b7a67f7c5410, type: 3}
+      objectReference: {fileID: 6917957921491467737, guid: 2deb7bf7069a6cc44914170ae67717d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -306,7 +306,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
