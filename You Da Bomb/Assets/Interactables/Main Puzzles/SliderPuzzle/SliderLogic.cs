@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SliderLogic : MonoBehaviour
+public class SliderLogic : PuzzleBase
 {
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI slidertext;
@@ -12,7 +12,30 @@ public class SliderLogic : MonoBehaviour
 
     private float correctValueStartTime;
     private bool isOnCorrectValue = false;
-    public float requiredHoldTime = 1f; 
+    public float requiredHoldTime = 1f;
+
+    private void Awake()
+    {
+        //Puzzle Base
+        puzzleName = "Slider Puzzle";
+        puzzleGridHeight = 1;
+        puzzleGridWidth = 1;
+        puzzleType = "Main"; //Label Constant for separate "Constant" grid spawning
+
+        Activate();
+    }
+
+    public override void Activate()
+    {
+        base.Activate();
+    }
+
+    public override void Solved()
+    {
+        base.Solved();
+        StressManagement.Instance.AdjustStress(-5.0f);
+        Destroy(GameObject.FindWithTag("SliderPuzzle"));
+    }
 
     void Start()
     {
@@ -46,9 +69,10 @@ public class SliderLogic : MonoBehaviour
         if (isOnCorrectValue && Time.time - correctValueStartTime >= requiredHoldTime)
         {
             Debug.Log("SUCCESS!");
-            //bulb.GetComponent<SpriteRenderer>().color = Color.green;
+            Solved();
             isOnCorrectValue = false;
-            Destroy(GameObject.FindWithTag("SliderPuzzle"));
+            
+            
 
         }
     }

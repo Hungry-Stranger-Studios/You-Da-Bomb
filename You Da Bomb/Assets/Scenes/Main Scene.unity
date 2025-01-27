@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
       propertyPath: puzzlePrefabs.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
       propertyPath: puzzlePrefabs.Array.data[3]
@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: puzzlePrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 2376807550068240449, guid: 4859f13bfaa272948987eaaf11659406, type: 3}
+    - target: {fileID: 1519545524416222248, guid: 394c947c81c40084a9fc24989130926b, type: 3}
+      propertyPath: puzzlePrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 6276102252857204193, guid: f4af56ac92eae9f44a68b7a67f7c5410, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
