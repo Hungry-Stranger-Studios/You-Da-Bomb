@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
-using UnityEngine.UIElements;
-using System.Runtime.CompilerServices;
+
 public class GridCell
 {
     public Vector2Int Position { get; private set; }
@@ -18,6 +16,8 @@ public class GridCell
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance { get; private set; }
+
     private GridCell[,] grid;
     private GridCell[,] gridConstant;
     private PuzzleFactory puzzleFactory;
@@ -27,14 +27,26 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int gridColumns = 2;
     [SerializeField] private int gridRowsConstant = 2;
     [SerializeField] private int gridColumnsConstant = 1;
-    [SerializeField] private float cellSpacing = 0.2f;
+    [SerializeField] private float cellSpacing = 1f;
     private float cellSize = 1f;
 
     [Header("Grid Spawning")]
     [SerializeField] private float puzzleSpawnRate = 5.0f; //How often puzzles spawn in seconds
 
+    private int puzzleCount = 0;
+
+    public int getPuzzleCount() { return puzzleCount; }
+
     private void Awake() //Initialize the grid
     {
+        if (Instance != null && Instance != this) //Only one grid manager
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         grid = new GridCell[gridColumns, gridRows];
         gridConstant = new GridCell[gridColumnsConstant, gridRowsConstant];
 
@@ -187,6 +199,7 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < puzzle.puzzleGridHeight; y++)
             {
                 grid[position.x + x, position.y + y].Puzzle = puzzle;
+                puzzleCount++;
             }
         }
 

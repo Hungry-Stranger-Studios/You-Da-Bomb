@@ -6,34 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public bool IsPaused { get; private set; }
-    private bool isGameActive;
-
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); //Persist between scenes
-        }
-        else
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-    }
-    private void Start()
-    {
-        isGameActive = false;
-        LoadMenuScene();
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); //Persist between scenes
     }
 
-    private void LoadMenuScene()
+    public void EndGame()
     {
-        Debug.Log("Menu displayed");
-    }
-
-    private void LoadMainScene()
-    {
-        Debug.Log("Main displayed");
+        Debug.Log("Womp womp");
     }
 }
