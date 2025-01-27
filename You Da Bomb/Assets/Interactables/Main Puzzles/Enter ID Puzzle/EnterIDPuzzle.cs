@@ -101,7 +101,7 @@ public class CodeTypingPuzzle : PuzzleBase
 
         // Create Submit Button
         GameObject submitButtonGO = Instantiate(buttonPrefab, canvasGO.transform);
-        Button submitButton = submitButtonGO.GetComponent<Button>();
+        UnityEngine.UI.Button submitButton = submitButtonGO.GetComponent<UnityEngine.UI.Button>();
         TextMeshProUGUI buttonText = submitButtonGO.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = "Submit";
 

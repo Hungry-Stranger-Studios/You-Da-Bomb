@@ -92,7 +92,7 @@ public class SimpleMathPuzzle : PuzzleBase
         {
             GameObject newButton = Instantiate(buttonPrefab, gridTransform);
 
-            Button buttonComponent = newButton.GetComponent<Button>();
+            UnityEngine.UI.Button buttonComponent = newButton.GetComponent<UnityEngine.UI.Button>();
             TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
 
             if (buttonText != null)
@@ -175,7 +175,7 @@ public class SimpleMathPuzzle : PuzzleBase
         return shuffledOptions;
     }
 
-    private void CheckValue(string value, Button button)
+    private void CheckValue(string value, UnityEngine.UI.Button button)
     {
         if (int.TryParse(value, out int intValue))
         {
