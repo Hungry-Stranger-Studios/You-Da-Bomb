@@ -7,7 +7,7 @@ public class DDTest : PuzzleBase
     private void Awake()
     {
         //Puzzle Base
-        puzzleName = "Slider Puzzle";
+        puzzleName = "DragDrop";
         puzzleGridHeight = 1;
         puzzleGridWidth = 1;
         puzzleType = "Main"; //Label Constant for separate "Constant" grid spawning

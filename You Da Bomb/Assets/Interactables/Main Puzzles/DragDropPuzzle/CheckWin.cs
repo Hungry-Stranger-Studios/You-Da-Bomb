@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckWin : MonoBehaviour
 {
-    public static CheckWin Instance; // Singleton instance
+    public static CheckWin Instance; 
 
     private int totalSnapPoints = 0;
     private int correctlySnappedCount = 0;
@@ -48,6 +48,6 @@ public class CheckWin : MonoBehaviour
     private void RegisterWin()
     {
         Debug.Log("All objects are correctly snapped! You win!");
-        // Add further win logic here, e.g., UI updates, level progression, etc.
+     
     }
 }
