@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class FlashLogic : MonoBehaviour
+public class FlashLogic : PuzzleBase
 {
     [SerializeField] private GameObject lightbulb1;
     [SerializeField] private GameObject lightbulb2;
@@ -15,7 +16,30 @@ public class FlashLogic : MonoBehaviour
     public bool button3clicked;
     public bool isFlashing2;
     public bool isFlashing3;
+
+    public bool L1Fail;
+    public bool L2Fail;
+    public bool L3Fail;
     // Start is called before the first frame update
+
+    public void Awake()
+    {
+        L1Fail = false;
+        L2Fail = false;
+        L3Fail = false;
+
+        puzzleName = "Flashing Light";
+        puzzleGridHeight = 1;
+        puzzleGridWidth = 1;
+        puzzleType = "Constant";
+
+        Activate();
+    }
+
+    public override void Activate()
+    {
+        base.Activate();
+    }
     void Start()
     {
         lightbulb1.TryGetComponent<SpriteRenderer>(out SpriteRenderer lightrenderer1);
@@ -27,11 +51,12 @@ public class FlashLogic : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        CheckForLoss();
     }
+
+
 
     private IEnumerator Flash1()
     {
@@ -63,6 +88,7 @@ public class FlashLogic : MonoBehaviour
 
             if(!taskCompleted)
             {
+                L1Fail = true;
                 Debug.Log("Lightbulb1 failed");
             }
 
@@ -101,6 +127,7 @@ public class FlashLogic : MonoBehaviour
 
             if (!taskCompleted)
             {
+                L2Fail = true;
                 Debug.Log("Lightbulb2 failed");
             }
 
@@ -139,6 +166,7 @@ public class FlashLogic : MonoBehaviour
 
             if (!taskCompleted)
             {
+                L3Fail = true;
                 Debug.Log("Lightbulb3 failed");
             }
 
@@ -183,6 +211,15 @@ public class FlashLogic : MonoBehaviour
         else
         {
             Debug.Log("Button 3 clicked, but not during a flashing period.");
+        }
+    }
+
+    public void CheckForLoss()
+    {
+        if(L1Fail && L2Fail && L3Fail)
+        {
+            StressManagement.Instance.AdjustStress(50.0f);
+            Debug.Log("Game Over");
         }
     }
 }

@@ -60,7 +60,7 @@ public class PressurePuzzleLogic : PuzzleBase
             if(Pressure > MaxPressure)
             {
                 Pressure = MaxPressure;
-                StressManagement.Instance.AdjustStress(50.0f);
+                StressManagement.Instance.AdjustStress(100.0f);
                 Debug.Log("Game Over");
             }
             PressureBar.fillAmount = Pressure / MaxPressure;       
