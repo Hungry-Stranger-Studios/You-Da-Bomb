@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4317389944425904838}
   - component: {fileID: 2813228567876211117}
   - component: {fileID: 6640043243361329710}
-  m_Layer: 5
+  - component: {fileID: 8030053692676952761}
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2166675377379126480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101.498795, y: -41.423717}
-  m_SizeDelta: {x: 66.8471, y: 64.9297}
+  m_AnchoredPosition: {x: 13.23, y: -65.96}
+  m_SizeDelta: {x: 1.1311, y: 1.0987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4317389944425904838
 CanvasRenderer:
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!210 &8030053692676952761
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166675377379126480}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &2911886764731560557
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +175,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2911886764731560557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 0.042289, y: 0.042289, z: 0.042289}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -172,8 +185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18.73445, y: 9.515448}
-  m_SizeDelta: {x: 882.8, y: 448.4}
+  m_AnchoredPosition: {x: -0.6, y: 2.79}
+  m_SizeDelta: {x: 446.89813, y: 226.9927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4832443774987740951
 Canvas:
@@ -253,8 +266,9 @@ MonoBehaviour:
   PressureBar: {fileID: 4437188626091275061}
   Pressure: 0
   MaxPressure: 100
-  decAmount: 10
-  ChargeRate: 5
+  decAmount: 7
+  ChargeRate: 10
+  StartTime: 0
 --- !u!114 &5263116070624685011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +292,7 @@ GameObject:
   - component: {fileID: 7471451737682651788}
   - component: {fileID: 4649459484439727540}
   - component: {fileID: 9169545750183434473}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,8 +449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270.05798}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.226826, y: -37.738213}
-  m_SizeDelta: {x: 116.3053, y: 18.0406}
+  m_AnchoredPosition: {x: -4.9256, y: -46.1786}
+  m_SizeDelta: {x: 2.7454, y: 0.4179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4960539388319048405
 CanvasRenderer:
@@ -487,6 +501,7 @@ GameObject:
   - component: {fileID: 9026546227833077291}
   - component: {fileID: 4055917878578357582}
   - component: {fileID: 2202907931668621384}
+  - component: {fileID: 3996978893453196370}
   m_Layer: 0
   m_Name: PressurePuzzlev1
   m_TagString: Untagged
@@ -504,7 +519,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.61, y: -0.81, z: 0}
-  m_LocalScale: {x: 23.646812, y: 23.646812, z: 23.646812}
+  m_LocalScale: {x: 15.320769, y: 15.320769, z: 15.320769}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1160451962286217034}
@@ -550,7 +565,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -331053475
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.3132075, g: 0.28779635, b: 0.28779635, a: 1}
@@ -580,6 +595,19 @@ MonoBehaviour:
   MaxPressure: 100
   decAmount: 10
   ChargeRate: 5
+  StartTime: 0
+--- !u!210 &3996978893453196370
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992946627270956882}
+  m_Enabled: 1
+  m_SortingLayerID: 722418233
+  m_SortingLayer: -1
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &6331208912106998934
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.943}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45, y: -38}
-  m_SizeDelta: {x: 116.3053, y: 18.0406}
+  m_AnchoredPosition: {x: -4.92, y: -46.18}
+  m_SizeDelta: {x: 2.7381, y: 0.4247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2186015176454318877
 CanvasRenderer:
@@ -747,7 +775,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8503177437484207562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -757,6 +785,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 19.8049, y: -19.8049}
+  m_SizeDelta: {x: 60.3903, y: 60.3903}
   m_Pivot: {x: 0.5, y: 0.5}

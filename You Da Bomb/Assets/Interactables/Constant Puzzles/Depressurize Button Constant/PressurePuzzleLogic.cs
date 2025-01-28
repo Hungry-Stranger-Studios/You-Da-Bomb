@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PressurePuzzleLogic : MonoBehaviour
+public class PressurePuzzleLogic : PuzzleBase
 {
     public Image PressureBar;
     public float Pressure, MaxPressure;
@@ -16,6 +16,19 @@ public class PressurePuzzleLogic : MonoBehaviour
     public void Awake()
     {
         StartTime = Time.time;
+
+        //Puzzle Base
+        puzzleName = "Pressure Bar";
+        puzzleGridHeight = 1;
+        puzzleGridWidth = 1;
+        puzzleType = "Constant";
+
+        Activate();
+    }
+
+    public override void Activate()
+    {
+        base.Activate();
     }
 
     public void Update()
@@ -47,6 +60,7 @@ public class PressurePuzzleLogic : MonoBehaviour
             if(Pressure > MaxPressure)
             {
                 Pressure = MaxPressure;
+                StressManagement.Instance.AdjustStress(50.0f);
                 Debug.Log("Game Over");
             }
             PressureBar.fillAmount = Pressure / MaxPressure;       

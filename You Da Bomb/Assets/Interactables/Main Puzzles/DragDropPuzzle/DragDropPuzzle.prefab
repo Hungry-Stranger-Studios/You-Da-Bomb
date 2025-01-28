@@ -404,9 +404,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179629590416498625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7192, y: 0.5092, z: 0.6481346}
-  m_LocalScale: {x: 19.248028, y: 19.248028, z: 19.248028}
+  m_LocalScale: {x: 13.5082655, y: 13.5082655, z: 13.5082655}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4220654512942794465}
@@ -599,9 +599,9 @@ MonoBehaviour:
   RedBlock: {fileID: 7106998514411543780}
   BlueBlock: {fileID: 7452652664496222543}
   GreenBlock: {fileID: 5747429533513738361}
-  S1: {fileID: 0}
-  S2: {fileID: 0}
-  S3: {fileID: 0}
+  S1: {fileID: 7106998514411543780}
+  S2: {fileID: 7452652664496222543}
+  S3: {fileID: 5747429533513738361}
   RedItem: {fileID: 4401211037280623952}
   SpawnPoint: 0
 --- !u!1 &4401211037280623952
