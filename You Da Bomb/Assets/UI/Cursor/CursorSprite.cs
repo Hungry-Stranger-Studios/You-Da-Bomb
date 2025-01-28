@@ -26,7 +26,7 @@ public class CursorSprite : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             PlayClickAnimation();
-        }
+        } 
 
         if (Input.GetMouseButton(0))
         {
