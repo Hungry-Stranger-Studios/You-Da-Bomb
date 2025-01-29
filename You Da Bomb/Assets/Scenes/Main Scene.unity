@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708639491389261949, guid: 4c0445947f37e3849969ce034a4953e1, type: 3}
       propertyPath: puzzleSpawnRate
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5877969830299194728, guid: 4c0445947f37e3849969ce034a4953e1, type: 3}
