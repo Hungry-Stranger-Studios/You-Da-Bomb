@@ -80,7 +80,7 @@ public class NumberCountPuzzle : PuzzleBase
             {
                 GameObject newButton = Instantiate(buttonPrefab, gridTransform);
 
-                Button buttonComponent = newButton.GetComponent<Button>();
+                UnityEngine.UI.Button buttonComponent = newButton.GetComponent<UnityEngine.UI.Button>();
                 TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
 
                 if (buttonText != null)
@@ -107,7 +107,7 @@ public class NumberCountPuzzle : PuzzleBase
         return shuffled;
     }
 
-    public void CheckValue(int value, Button pressedButton)
+    public void CheckValue(int value, UnityEngine.UI.Button pressedButton)
     {
         //Check if sequence matches
         if (value == expected[nextExpectedIndex])
