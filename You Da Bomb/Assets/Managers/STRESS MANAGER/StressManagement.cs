@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class StressManagement : MonoBehaviour
 {
@@ -16,8 +17,11 @@ public class StressManagement : MonoBehaviour
     [Header("Stress Gauge")]
     public Image stressFillImage;
     [SerializeField] private float fillSmoothSpeed = 2.0f; //Speed of the smooth fill animation
+    [SerializeField] private float magnitude = 2.0f;
 
     private float targetFillAmount;
+    private RectTransform imageRect;
+    private Vector3 originalPosition;
 
     private void Awake()
     {
@@ -26,9 +30,10 @@ public class StressManagement : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
 
+        originalPosition = this.transform.position;
+        Debug.Log(originalPosition);
         stressLevel = Mathf.Clamp(stressLevel, 1, maxStressLevel);
         UpdateStressMeterUI();
     }
@@ -86,6 +91,23 @@ public class StressManagement : MonoBehaviour
         {
             float currentFill = stressFillImage.fillAmount;
             stressFillImage.fillAmount = Mathf.Lerp(currentFill, targetFillAmount, fillSmoothSpeed * Time.deltaTime);
+            if (currentFill >= 50)
+            {
+                imageRect = stressFillImage.GetComponent<RectTransform>();
+                StartCoroutine(Shake() );
+            }
         }
+    }
+
+    private System.Collections.IEnumerator Shake()
+    {        
+        float offsetX = Random.Range(-1f, 1f) * magnitude;
+        float offsetY = Random.Range(-1f, 1f) * magnitude;
+
+        imageRect.anchoredPosition = originalPosition + new Vector3(offsetX, offsetY, 0);
+
+        yield return null;
+
+        imageRect.anchoredPosition = originalPosition;
     }
 }

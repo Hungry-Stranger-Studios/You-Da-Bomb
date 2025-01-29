@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridCell
@@ -32,10 +33,11 @@ public class GridManager : MonoBehaviour
 
     [Header("Grid Spawning")]
     [SerializeField] private float puzzleSpawnRate = 5.0f; //How often puzzles spawn in seconds
+    [SerializeField] private Vector3 mainGridOffset = Vector3.zero;
+    [SerializeField] private Vector3 constantGridOffset = Vector3.zero;
 
     private int puzzleCount = 0;
 
-    //new line test
     private HashSet<string> constantpuzzleplaced = new HashSet<string>();
 
     public int getPuzzleCount() { return puzzleCount; }
@@ -97,6 +99,7 @@ public class GridManager : MonoBehaviour
     {
         GameObject puzzleObject = puzzleFactory.FetchRandomPuzzle();
         PuzzleBase puzzle = puzzleObject.GetComponent<PuzzleBase>();
+        puzzle.AddComponent<SpriteMask>();
 
         if (puzzle == null)
         {
@@ -105,13 +108,11 @@ public class GridManager : MonoBehaviour
 
         if (puzzle.puzzleType == "Constant")
         {
-            //new line area start
             if(constantpuzzleplaced.Contains(puzzle.name))
             {
                 Destroy(puzzleObject);
                 return;
             }
-            //new line area end
 
             //Place in the constant grid
             Vector2Int? placementPosition = FindPlacementForConstantPuzzle(puzzle);
@@ -119,9 +120,7 @@ public class GridManager : MonoBehaviour
             if (placementPosition.HasValue)
             {
                 PlacePuzzleInConstantGrid(puzzle, placementPosition.Value);
-                //new line
                 constantpuzzleplaced.Add(puzzle.name);
-                //new line
             }
             else
             {
@@ -227,7 +226,7 @@ public class GridManager : MonoBehaviour
         //Convert grid coordinates to world coordinates
         float xPosition = gridPosition.x * (cellSize + cellSpacing);
         float yPosition = gridPosition.y * (cellSize + cellSpacing);
-        return new Vector3(xPosition, yPosition, 0);
+        return new Vector3(xPosition, yPosition, 0) + mainGridOffset;
     }
 
     private Vector2Int? FindPlacementForConstantPuzzle(PuzzleBase puzzle)
@@ -284,8 +283,8 @@ public class GridManager : MonoBehaviour
     private Vector3 CalculateWorldPositionForConstantGrid(Vector2Int gridPosition)
     {
         float xPosition = gridPosition.x * (cellSize + cellSpacing);
-        float yPosition = -(gridRowsConstant * (cellSize + cellSpacing)) + gridPosition.y * (cellSize + cellSpacing); //Offset below main grid
-        return new Vector3(xPosition, yPosition, 0);
+        float yPosition = -(gridRowsConstant * (cellSize + cellSpacing)) + gridPosition.y * (cellSize + cellSpacing);
+        return new Vector3(xPosition, yPosition, 0) + constantGridOffset;
     }
 
     private void OnDrawGizmos()
@@ -300,7 +299,7 @@ public class GridManager : MonoBehaviour
                 GridCell cell = grid[x, y];
                 Gizmos.color = (cell.Puzzle != null) ? Color.green : Color.red;
 
-                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), y * (cellSize + cellSpacing), 0);
+                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), y * (cellSize + cellSpacing), 0) + mainGridOffset;
                 Gizmos.DrawWireCube(cellPosition, Vector3.one);
             }
         }
@@ -313,7 +312,7 @@ public class GridManager : MonoBehaviour
                 GridCell cell = gridConstant[x, y];
                 Gizmos.color = (cell.Puzzle != null) ? Color.blue : Color.yellow;
 
-                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), -(gridRowsConstant * (cellSize + cellSpacing)) + y * (cellSize + cellSpacing), 0);
+                Vector3 cellPosition = new Vector3(x * (cellSize + cellSpacing), -(gridRowsConstant * (cellSize + cellSpacing)) + y * (cellSize + cellSpacing), 0) + constantGridOffset;
                 Gizmos.DrawWireCube(cellPosition, Vector3.one);
             }
         }
