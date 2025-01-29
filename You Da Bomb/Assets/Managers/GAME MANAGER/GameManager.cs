@@ -17,9 +17,4 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject); //Persist between scenes
     }
-
-    public void EndGame()
-    {
-        Debug.Log("Womp womp");
-    }
 }

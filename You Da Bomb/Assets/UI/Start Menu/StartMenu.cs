@@ -9,4 +9,9 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void RunTutorial()
+    {
+        SceneManager.LoadScene("HowToPlay Scene");
+    }
 }
