@@ -31,6 +31,10 @@ public class SimpleMathPuzzle : PuzzleBase
         canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
+        //Set sorting layer and order
+        canvas.overrideSorting = true;
+        canvas.sortingLayerName = "PuzzleElement";
+
         // Create Grid
         GameObject gridGO = Instantiate(gridPrefab, canvas.transform);
         gridTransform = gridGO.transform;

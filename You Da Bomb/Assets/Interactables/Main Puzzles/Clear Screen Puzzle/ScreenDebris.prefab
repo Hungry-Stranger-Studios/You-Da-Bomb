@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8575386565774075697}
   - component: {fileID: 7412625322158019145}
   - component: {fileID: 6821005840236317733}
+  - component: {fileID: -7596653897820478573}
   m_Layer: 0
   m_Name: ScreenDebris
   m_TagString: Untagged
@@ -147,3 +148,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25280762, y: 0.2522421}
   m_EdgeRadius: 0
+--- !u!210 &-7596653897820478573
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856551101457059249}
+  m_Enabled: 1
+  m_SortingLayerID: 122731555
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
