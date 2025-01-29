@@ -501,7 +501,6 @@ GameObject:
   - component: {fileID: 9026546227833077291}
   - component: {fileID: 4055917878578357582}
   - component: {fileID: 2202907931668621384}
-  - component: {fileID: 3996978893453196370}
   m_Layer: 0
   m_Name: PressurePuzzlev1
   m_TagString: Untagged
@@ -564,8 +563,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -331053475
-  m_SortingLayer: 0
+  m_SortingLayerID: -907003529
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.3132075, g: 0.28779635, b: 0.28779635, a: 1}
@@ -596,18 +595,6 @@ MonoBehaviour:
   decAmount: 10
   ChargeRate: 5
   StartTime: 0
---- !u!210 &3996978893453196370
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5992946627270956882}
-  m_Enabled: 1
-  m_SortingLayerID: 722418233
-  m_SortingLayer: -1
-  m_SortingOrder: 2
-  m_SortAtRoot: 0
 --- !u!1 &6331208912106998934
 GameObject:
   m_ObjectHideFlags: 0

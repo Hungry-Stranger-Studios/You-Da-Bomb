@@ -29,6 +29,10 @@ public class CodeTypingPuzzle : PuzzleBase
         canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
+        //Set sorting layer and order
+        canvas.overrideSorting = true;
+        canvas.sortingLayerName = "PuzzleElement";
+
         // Create Code Text
         GameObject codeTextGO = new GameObject("CodeText");
         codeTextGO.transform.SetParent(canvasGO.transform);

@@ -43,6 +43,10 @@ public class HoldButtonPuzzle : PuzzleBase
         canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
+        //Set sorting layer and order
+        puzzleCanvas.overrideSorting = true;
+        puzzleCanvas.sortingLayerName = "PuzzleElement";
+
         //Make button
         GameObject buttonObject = Instantiate(buttonPrefab, puzzleCanvas.transform);
         buttonHandler = buttonObject.AddComponent<ButtonHoldHandler>();

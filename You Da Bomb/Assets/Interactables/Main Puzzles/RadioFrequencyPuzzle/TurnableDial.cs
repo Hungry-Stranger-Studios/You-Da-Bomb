@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TurnableDial : MonoBehaviour
@@ -11,7 +12,9 @@ public class TurnableDial : MonoBehaviour
 
     void Start()
     {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
         dialCenter = this.transform.position;
+        sr.sortingLayerName = "PuzzleElement";
     }
 
     void Update()

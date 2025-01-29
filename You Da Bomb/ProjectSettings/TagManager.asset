@@ -7,6 +7,7 @@ TagManager:
   - Button1
   - Button2
   - Button3
+  - SliderPuzzle
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Puzzle
     uniqueID: 3387963767
+    locked: 0
+  - name: PuzzleElement
+    uniqueID: 122731555
     locked: 0
   - name: StressBar
     uniqueID: 1199648847
