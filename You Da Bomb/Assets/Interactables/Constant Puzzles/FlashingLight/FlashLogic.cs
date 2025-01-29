@@ -63,7 +63,7 @@ public class FlashLogic : PuzzleBase
         while (true)
         {
             lightbulb1.TryGetComponent<SpriteRenderer>(out SpriteRenderer lightrenderer1);
-            TBF = Random.Range(1, 5);
+            TBF = Random.Range(5, 10);
             yield return new WaitForSeconds(TBF);
 
             //start flashing
@@ -102,7 +102,7 @@ public class FlashLogic : PuzzleBase
         while (true)
         {
             lightbulb2.TryGetComponent<SpriteRenderer>(out SpriteRenderer lightrenderer2);
-            TBF = Random.Range(1, 5);
+            TBF = Random.Range(8, 15);
             yield return new WaitForSeconds(TBF);
 
             //start flashing
@@ -141,7 +141,7 @@ public class FlashLogic : PuzzleBase
         while (true)
         {
             lightbulb3.TryGetComponent<SpriteRenderer>(out SpriteRenderer lightrenderer3);
-            TBF = Random.Range(1, 5);
+            TBF = Random.Range(11, 17);
             yield return new WaitForSeconds(TBF);
 
             //start flashing

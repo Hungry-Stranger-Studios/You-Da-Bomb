@@ -15,7 +15,7 @@ public class WinLogic : MonoBehaviour
     [SerializeField] GameObject RedItem;
 
 
-    //private Vector3 spawn1 = new Vector3(-0.99f, 1.3f, 0.47f);
+  
     private Vector3 spawn1;
     private Vector3 spawn2;
     private Vector3 spawn3;
@@ -24,7 +24,7 @@ public class WinLogic : MonoBehaviour
     
 
     public int SpawnPoint;
-    // Start is called before the first frame update
+    
 
     
     void Start()

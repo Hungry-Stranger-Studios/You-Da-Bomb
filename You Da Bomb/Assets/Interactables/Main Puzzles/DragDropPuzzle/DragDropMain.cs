@@ -24,7 +24,6 @@ public class DDTest : PuzzleBase
     {
         base.Solved();
         StressManagement.Instance.AdjustStress(-5.0f);
-        //Destroy(GameObject.FindWithTag("SliderPuzzle"));
         Debug.Log("Solved() has been called");
         Destroy(this.gameObject);
     }

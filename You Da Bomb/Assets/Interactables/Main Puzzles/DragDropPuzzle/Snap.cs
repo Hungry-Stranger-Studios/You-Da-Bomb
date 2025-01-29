@@ -8,7 +8,7 @@ public class Snap : MonoBehaviour
     public List<DragDrop> draggableObject;
     public float snapRange = 0.5f;
 
-    public bool isCorrectlySnapped = false; //new line
+    public bool isCorrectlySnapped = false; 
 
     private void Update()
     {
