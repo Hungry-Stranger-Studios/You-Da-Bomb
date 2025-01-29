@@ -38,6 +38,8 @@ public class GridManager : MonoBehaviour
 
     private int puzzleCount = 0;
 
+    private HashSet<string> constantpuzzleplaced = new HashSet<string>();
+
     public int getPuzzleCount() { return puzzleCount; }
 
     private void Awake() //Initialize the grid
@@ -106,12 +108,19 @@ public class GridManager : MonoBehaviour
 
         if (puzzle.puzzleType == "Constant")
         {
+            if(constantpuzzleplaced.Contains(puzzle.name))
+            {
+                Destroy(puzzleObject);
+                return;
+            }
+
             //Place in the constant grid
             Vector2Int? placementPosition = FindPlacementForConstantPuzzle(puzzle);
 
             if (placementPosition.HasValue)
             {
                 PlacePuzzleInConstantGrid(puzzle, placementPosition.Value);
+                constantpuzzleplaced.Add(puzzle.name);
             }
             else
             {

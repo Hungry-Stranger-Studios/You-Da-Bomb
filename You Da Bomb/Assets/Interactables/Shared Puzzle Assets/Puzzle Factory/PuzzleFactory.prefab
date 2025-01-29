@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f927e963dc1e16c4bbc7fadec4b43d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePrefabs: []
+  puzzlePrefabs:
+  - {fileID: 8598643375270441473, guid: 9d446ee0247dd2542ae028d02c0b1be5, type: 3}
+  - {fileID: 6093648409590851590, guid: b36e6ea91c6f77747ae70046ef2126ee, type: 3}
+  - {fileID: 3487124141853928923, guid: 12c36ee8319fcf04bba6ac419da9c209, type: 3}
+  - {fileID: 6093648409590851590, guid: 6928f521a7a84764aa1c3f0d2ac14915, type: 3}
+  - {fileID: 6093648409590851590, guid: 31eadd66ada968b46891c85b3e904fc8, type: 3}
+  - {fileID: 2376807550068240449, guid: 4859f13bfaa272948987eaaf11659406, type: 3}

@@ -7,7 +7,6 @@ public class PuzzleFactory : MonoBehaviour
     [Header("Puzzle Prefabs")]
     [SerializeField] private List<GameObject> puzzlePrefabs = new List<GameObject>();
 
-    
     public GameObject FetchRandomPuzzle()
     {
         if (puzzlePrefabs.Count == 0)
@@ -16,7 +15,7 @@ public class PuzzleFactory : MonoBehaviour
             return null;
         }
 
-        int random = Random.Range(0,puzzlePrefabs.Count - 1);
+        int random = Random.Range(0, puzzlePrefabs.Count);
         GameObject selectedPrefab = puzzlePrefabs[random];
 
         return Instantiate(selectedPrefab);

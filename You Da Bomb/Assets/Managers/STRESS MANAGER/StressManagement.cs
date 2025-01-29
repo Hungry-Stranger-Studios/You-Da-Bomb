@@ -91,7 +91,6 @@ public class StressManagement : MonoBehaviour
         {
             float currentFill = stressFillImage.fillAmount;
             stressFillImage.fillAmount = Mathf.Lerp(currentFill, targetFillAmount, fillSmoothSpeed * Time.deltaTime);
-
             if (currentFill >= 50)
             {
                 imageRect = stressFillImage.GetComponent<RectTransform>();
