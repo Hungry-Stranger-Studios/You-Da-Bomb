@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class StressManagement : MonoBehaviour
 {
     public static StressManagement Instance { get; private set; }
+    public GameOverScript gameOverScript;
 
     [Header("Stress Stats")]
     [SerializeField] private float stressLevel = 1f; //Actual Stress level
@@ -76,7 +77,7 @@ public class StressManagement : MonoBehaviour
         //Check for game over
         if (stressLevel >= maxStressLevel)
         {
-            GameManager.Instance.EndGame(); //Trigger game over
+            gameOverScript.Run();
         }
     }
 
