@@ -121,6 +121,7 @@ public class FrequencyPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
         staticAudio.Stop();
         songAudio.Stop();

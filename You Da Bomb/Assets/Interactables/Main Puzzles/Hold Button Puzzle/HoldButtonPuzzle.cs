@@ -97,6 +97,7 @@ public class HoldButtonPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
         Destroy(this.gameObject);
     }

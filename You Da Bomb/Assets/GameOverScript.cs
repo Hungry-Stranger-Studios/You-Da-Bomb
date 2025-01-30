@@ -6,12 +6,9 @@ using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
-    public Text pointsText;
-
-    public void Setup(int time, int score)
+    public void Run()
     {
         gameObject.SetActive(true);
-        pointsText.text = "You survived " + time + " seconds and deactivated " + score + " puzzles!";
     }
 
     public void RestartButton()
