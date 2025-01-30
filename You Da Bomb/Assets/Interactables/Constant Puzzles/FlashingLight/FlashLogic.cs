@@ -218,7 +218,7 @@ public class FlashLogic : PuzzleBase
     {
         if(L1Fail && L2Fail && L3Fail)
         {
-            StressManagement.Instance.AdjustStress(50.0f);
+            StressManagement.Instance.AdjustStress(25.0f);
             Debug.Log("Game Over");
         }
     }
