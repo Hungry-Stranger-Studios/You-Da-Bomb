@@ -44,6 +44,8 @@ public class GridManager : MonoBehaviour
 
     private int puzzleCount = 0;
 
+    private HashSet<string> constantpuzzleplaced = new HashSet<string>();
+
     public int getPuzzleCount() { return puzzleCount; }
 
     private void Awake() //Initialize the grid
@@ -103,7 +105,6 @@ public class GridManager : MonoBehaviour
     {
         GameObject puzzleObject = puzzleFactory.FetchRandomPuzzle();
         PuzzleBase puzzle = puzzleObject.GetComponent<PuzzleBase>();
-        puzzle.AddComponent<SpriteMask>();
 
         if (puzzle == null)
         {
@@ -112,12 +113,19 @@ public class GridManager : MonoBehaviour
 
         if (puzzle.puzzleType == "Constant")
         {
+            if(constantpuzzleplaced.Contains(puzzle.name))
+            {
+                Destroy(puzzleObject);
+                return;
+            }
+
             //Place in the constant grid
             Vector2Int? placementPosition = FindPlacementForConstantPuzzle(puzzle);
 
             if (placementPosition.HasValue)
             {
                 PlacePuzzleInConstantGrid(puzzle, placementPosition.Value);
+                constantpuzzleplaced.Add(puzzle.name);
             }
             else
             {
@@ -284,7 +292,7 @@ public class GridManager : MonoBehaviour
         //Convert grid coordinates to world coordinates
         float xPosition = gridPosition.x * (cellSize + cellSpacing);
         float yPosition = gridPosition.y * (cellSize + cellSpacing);
-        return new Vector3(xPosition, yPosition, 0) + mainGridOffset;
+        return new Vector3(xPosition, yPosition, -4) + mainGridOffset;
     }
 
     private Vector2Int? FindPlacementForConstantPuzzle(PuzzleBase puzzle)
@@ -342,7 +350,7 @@ public class GridManager : MonoBehaviour
     {
         float xPosition = gridPosition.x * (cellSize + cellSpacing);
         float yPosition = -(gridRowsConstant * (cellSize + cellSpacing)) + gridPosition.y * (cellSize + cellSpacing);
-        return new Vector3(xPosition, yPosition, 0) + constantGridOffset;
+        return new Vector3(xPosition, yPosition, -4) + constantGridOffset;
     }
 
     private void OnDrawGizmos()
