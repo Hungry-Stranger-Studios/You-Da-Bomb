@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,6 +18,11 @@ public class GridCell
 
 public class GridManager : MonoBehaviour
 {
+    [Header("BombDoor Handler")]
+    [SerializeField] private AnimationClip BombDoorOpen;
+    [SerializeField] private AnimationClip BombDoorClose;
+    [SerializeField] private List<GameObject> BombDoors;
+
     public static GridManager Instance { get; private set; }
 
     private GridCell[,] grid;
@@ -127,6 +133,7 @@ public class GridManager : MonoBehaviour
             if (placementPosition.HasValue)
             {
                 PlacePuzzle(puzzle, placementPosition.Value);
+                RunBombDoor(placementPosition.Value);
             }
             else
             {
@@ -135,6 +142,66 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
+    private void RunBombDoor(Vector2Int position)
+    {
+        GameObject bombDoor = FindBombDoorAtPosition(position);
+        if (bombDoor == null)
+        {
+            Debug.LogError($"No BombDoor found for position {position}");
+            return;
+        }
+
+        // Play the open animation
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null && BombDoorOpen != null)
+        {
+            animator.Play(BombDoorOpen.name);
+        }
+
+        // Hide the bomb door after the animation is done
+        StartCoroutine(HideBombDoorAfterAnimation(bombDoor, BombDoorOpen.length));
+    }
+
+    private GameObject FindBombDoorAtPosition(Vector2Int position)
+    {
+        foreach (GameObject bombDoor in BombDoors)
+        {
+            BombDoorManager controller = bombDoor.GetComponent<BombDoorManager>();
+            if (controller != null && controller.GridPosition == position)
+            {
+                return bombDoor;
+            }
+        }
+        return null;
+    }
+
+    private IEnumerator HideBombDoorAfterAnimation(GameObject bombDoor, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        bombDoor.SetActive(false);
+    }
+
+    public void OnPuzzleFinished(Vector2Int position)
+    {
+        GameObject bombDoor = FindBombDoorAtPosition(position);
+        if (bombDoor == null)
+        {
+            Debug.LogError($"No BombDoor found for position {position}");
+            return;
+        }
+
+        bombDoor.SetActive(true);
+
+        // Play the close animation
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null && BombDoorClose != null)
+        {
+            animator.Play(BombDoorClose.name);
+        }
+    }
+
+
 
     private Vector2Int? FindPlacementForPuzzle(PuzzleBase puzzle) //Goes through grid cells, checks for valid
     {

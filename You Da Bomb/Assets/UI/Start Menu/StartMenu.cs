@@ -14,4 +14,9 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene("HowToPlay Scene");
     }
+
+    public void RunCredits()
+    {
+        SceneManager.LoadScene("Credits Scene");
+    }
 }
