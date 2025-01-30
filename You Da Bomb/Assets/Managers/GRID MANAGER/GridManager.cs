@@ -23,6 +23,11 @@ public class GridManager : MonoBehaviour
     private GridCell[,] gridConstant;
     private PuzzleFactory puzzleFactory;
 
+    [Header("BombDoor Handler")]
+    [SerializeField] private AnimationClip BombDoorOpen;
+    [SerializeField] private AnimationClip BombDoorClose;
+    [SerializeField] private List<GameObject> BombDoors;
+
     [Header("Grid Sizing")]
     [SerializeField] private int gridRows = 2;
     [SerializeField] private int gridColumns = 2;
@@ -120,6 +125,8 @@ public class GridManager : MonoBehaviour
             {
                 PlacePuzzleInConstantGrid(puzzle, placementPosition.Value);
                 constantpuzzleplaced.Add(puzzle.name);
+                puzzle.puzzleLocation = placementPosition.Value;
+                RunBombDoorConstant(placementPosition.Value);
             }
             else
             {
@@ -135,6 +142,8 @@ public class GridManager : MonoBehaviour
             if (placementPosition.HasValue)
             {
                 PlacePuzzle(puzzle, placementPosition.Value);
+                puzzle.puzzleLocation = placementPosition.Value;
+                RunBombDoor(placementPosition.Value);
             }
             else
             {
@@ -143,6 +152,119 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
+    private void RunBombDoor(Vector2Int position)
+    {
+        GameObject bombDoor = FindBombDoorAtPosition(position, false);
+        if (bombDoor == null)
+        {
+            Debug.LogError($"No BombDoor found for position {position}");
+            return;
+        }
+
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null && BombDoorOpen != null)
+        {
+            // Enable the animator and play the "open" animation
+            animator.enabled = true;
+            animator.Play(BombDoorOpen.name);
+
+            // Wait for the animation to end, then disable the object
+            StartCoroutine(DisableBombDoorAfterAnimation(bombDoor, BombDoorOpen.length));
+        }
+        else
+        {
+            Debug.LogError($"Animator or BombDoorOpen animation is not assigned for BombDoor at {position}");
+        }
+    }
+
+    private void RunBombDoorConstant(Vector2Int position)
+    {
+        GameObject bombDoor = FindBombDoorAtPosition(position, true);
+        if (bombDoor == null)
+        {
+            Debug.LogError($"No BombDoor found for position {position}");
+            return;
+        }
+
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null && BombDoorOpen != null)
+        {
+            // Enable the animator and play the "open" animation
+            animator.enabled = true;
+            animator.Play(BombDoorOpen.name);
+
+            // Wait for the animation to end, then disable the object
+            StartCoroutine(DisableBombDoorAfterAnimation(bombDoor, BombDoorOpen.length));
+        }
+        else
+        {
+            Debug.LogError($"Animator or BombDoorOpen animation is not assigned for BombDoor at {position}");
+        }
+    }
+
+    private IEnumerator DisableBombDoorAfterAnimation(GameObject bombDoor, float animationLength)
+    {
+        yield return new WaitForSeconds(animationLength);
+
+        // Disable the animator and the bomb door object
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null) animator.enabled = false;
+
+        bombDoor.SetActive(false);
+    }
+
+    private GameObject FindBombDoorAtPosition(Vector2Int position, bool isConstant)
+    {
+        foreach (GameObject bombDoor in BombDoors)
+        {
+            BombDoorManager controller = bombDoor.GetComponent<BombDoorManager>();
+            if (controller != null && controller.GridPosition == position && controller.IsConstant == isConstant)
+            {
+                return bombDoor;
+            }
+        }
+        return null;
+    }
+
+    public void OnPuzzleFinished(Vector2Int position, bool isConstant)
+    {
+        Debug.Log($"{position} - The doors are closing");
+
+        GameObject bombDoor = FindBombDoorAtPosition(position, isConstant);
+        if (bombDoor == null)
+        {
+            Debug.LogError($"No BombDoor found for position {position}");
+            return;
+        }
+
+        // Re-enable the bomb door
+        bombDoor.SetActive(true);
+
+        Animator animator = bombDoor.GetComponent<Animator>();
+        if (animator != null && BombDoorClose != null)
+        {
+            // Enable the animator and play the "close" animation
+            animator.enabled = true;
+            animator.Play(BombDoorClose.name);
+
+            // Wait for the animation to end, then stop the animator
+            StartCoroutine(StopAndDisableAnimatorAfterAnimation(animator, BombDoorClose.length));
+        }
+        else
+        {
+            Debug.LogError($"Animator or BombDoorClose animation is not assigned for BombDoor at {position}");
+        }
+    }
+
+    private IEnumerator StopAndDisableAnimatorAfterAnimation(Animator animator, float animationLength)
+    {
+        yield return new WaitForSeconds(animationLength);
+
+        // Disable the animator
+        if (animator != null) animator.enabled = false;
+    }
+
 
     private Vector2Int? FindPlacementForPuzzle(PuzzleBase puzzle) //Goes through grid cells, checks for valid
     {

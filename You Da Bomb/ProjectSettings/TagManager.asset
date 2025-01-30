@@ -63,6 +63,9 @@ TagManager:
   - name: Border
     uniqueID: 1589509133
     locked: 0
+  - name: BombDoor
+    uniqueID: 1889354503
+    locked: 0
   - name: Cursor
     uniqueID: 1975278105
     locked: 0

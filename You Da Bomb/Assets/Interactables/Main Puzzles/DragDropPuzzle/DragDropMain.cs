@@ -23,6 +23,7 @@ public class DDTest : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
         Debug.Log("Solved() has been called");
         Destroy(this.gameObject);
