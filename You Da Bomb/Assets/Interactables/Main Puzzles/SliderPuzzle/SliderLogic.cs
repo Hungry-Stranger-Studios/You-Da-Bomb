@@ -8,6 +8,8 @@ public class SliderLogic : MonoBehaviour
     [SerializeField] private TextMeshProUGUI slidertext;
     [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private GameObject bulb;
+    [SerializeField] private Sprite failSprite;
+    [SerializeField] private Sprite successSprite;
 
     [SerializeField] private Test sliderPuzzleMain;
     
@@ -35,12 +37,12 @@ public class SliderLogic : MonoBehaviour
                 {
                     correctValueStartTime = Time.time;
                     isOnCorrectValue = true;
-                    bulb.GetComponent<SpriteRenderer>().color = Color.green;
+                    bulb.GetComponent<SpriteRenderer>().sprite = successSprite;
                 }
             }
             else
             {
-                renderer.color = Color.red;
+                renderer.sprite = failSprite;
                 isOnCorrectValue = false;
             }
         });
@@ -52,7 +54,6 @@ public class SliderLogic : MonoBehaviour
         {
             
             sliderPuzzleMain.Solved();
-            Debug.Log("SUCCESS!");
             isOnCorrectValue = false;
             
             

@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 2166675377379126480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7471451737682651788}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.23, y: -65.96}
+  m_AnchoredPosition: {x: 8, y: -65}
   m_SizeDelta: {x: 1.1311, y: 1.0987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4317389944425904838
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: fdd38c358fa95e144806e2e173c87505, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -531,7 +531,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.61, y: -0.81, z: 0}
-  m_LocalScale: {x: 15.320769, y: 15.320769, z: 15.320769}
+  m_LocalScale: {x: 1, y: 1, z: 15.320769}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3605079271205591628}
@@ -578,8 +578,8 @@ SpriteRenderer:
   m_SortingLayerID: -907003529
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.3132075, g: 0.28779635, b: 0.28779635, a: 1}
+  m_Sprite: {fileID: 21300000, guid: acff56cbdc842f3468169f945d513533, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -707,7 +707,7 @@ RectTransform:
   m_GameObject: {fileID: 8503177437484207562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4238610401436554488}
@@ -716,6 +716,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.8049, y: -19.8049}
-  m_SizeDelta: {x: 60.3903, y: 60.3903}
+  m_AnchoredPosition: {x: 76.7, y: 395.9}
+  m_SizeDelta: {x: 13.2, y: 103.93}
   m_Pivot: {x: 0.5, y: 0.5}

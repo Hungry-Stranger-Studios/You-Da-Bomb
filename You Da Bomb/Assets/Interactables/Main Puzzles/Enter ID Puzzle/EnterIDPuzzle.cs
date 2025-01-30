@@ -12,6 +12,7 @@ public class CodeTypingPuzzle : PuzzleBase
 
     [Header("Prefabs")]
     [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private TMP_FontAsset textFont;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class CodeTypingPuzzle : PuzzleBase
         codeTextGO.transform.SetParent(canvasGO.transform);
         codeText = codeTextGO.AddComponent<TextMeshProUGUI>();
         codeText.fontSize = 24;
+        codeText.font = textFont;
         codeText.alignment = TextAlignmentOptions.Center;
 
         // Configure Code Text Layout
@@ -73,13 +75,15 @@ public class CodeTypingPuzzle : PuzzleBase
         TextMeshProUGUI inputText = new GameObject("InputText").AddComponent<TextMeshProUGUI>();
         inputText.transform.SetParent(inputFieldGO.transform);
         inputField.textComponent = inputText;
-        inputText.fontSize = 24;
+        inputText.fontSize = 23;
         inputText.alignment = TextAlignmentOptions.Center;
         inputText.color = Color.black;
+        inputText.font = textFont;
+        inputText.fontStyle = FontStyles.Bold;
 
         // Set RectTransform for Input Text
         RectTransform inputTextRect = inputText.GetComponent<RectTransform>();
-        inputTextRect.localScale = new Vector3(1f, 1f, 1f);
+        inputTextRect.localScale = new Vector3(1f, 1.5f, 1f);
         inputTextRect.anchorMin = new Vector2(0, 0);
         inputTextRect.anchorMax = new Vector2(1, 1);
         inputTextRect.offsetMin = new Vector2(5, 5);
@@ -88,10 +92,12 @@ public class CodeTypingPuzzle : PuzzleBase
 
         // Add Placeholder Text
         TextMeshProUGUI placeholderText = new GameObject("Placeholder").AddComponent<TextMeshProUGUI>();
-        placeholderText.text = "Enter code here...";
-        placeholderText.fontSize = 20;
+        placeholderText.text = "Code here";
+        placeholderText.fontSize = 23;
         placeholderText.alignment = TextAlignmentOptions.Center;
-        placeholderText.color = Color.gray;
+        placeholderText.color = Color.black;
+        placeholderText.font = textFont;
+        placeholderText.fontStyle = FontStyles.Bold;
         placeholderText.transform.SetParent(inputFieldGO.transform);
         inputField.placeholder = placeholderText;
 
@@ -108,15 +114,22 @@ public class CodeTypingPuzzle : PuzzleBase
         UnityEngine.UI.Button submitButton = submitButtonGO.GetComponent<UnityEngine.UI.Button>();
         TextMeshProUGUI buttonText = submitButtonGO.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = "Submit";
+        RectTransform textRect = buttonText.GetComponent<RectTransform>();
+        textRect.localScale = new Vector2(0.015f, 0.015f);
+        textRect.anchorMin = new Vector2(0.5f, 0.5f);
+        textRect.anchorMax = new Vector2(0.5f, 0.5f);
+        textRect.pivot = new Vector2(0.5f, 0.5f);
+        textRect.anchoredPosition = new Vector2(0f, -0.25f);
+        textRect.sizeDelta = Vector2.zero;
 
         // Configure Submit Button Layout
         RectTransform buttonRect = submitButtonGO.GetComponent<RectTransform>();
-        buttonRect.localScale = new Vector3(0.015f, 0.015f, 1f);
-        buttonRect.anchorMin = new Vector2(0.5f, 0.3f);
-        buttonRect.anchorMax = new Vector2(0.5f, 0.3f);
+        buttonRect.localScale = new Vector3(1.25f, 1.0f, 1f);
+        buttonRect.anchoredPosition = new Vector2(0, 0f);
+        buttonRect.anchorMin = new Vector2(0.5f, 0.5f);
+        buttonRect.anchorMax = new Vector2(0.5f, 0.5f);
         buttonRect.pivot = new Vector2(0.5f, 0.5f);
-        buttonRect.anchoredPosition = new Vector2(-1, 19.5f);
-        buttonRect.sizeDelta = new Vector2(100, 30);
+        buttonRect.anchoredPosition = new Vector2(-1, -0.5f);
 
         // Add Listener to Submit Button
         submitButton.onClick.AddListener(CheckInput);
@@ -135,8 +148,8 @@ public class CodeTypingPuzzle : PuzzleBase
 
     private string GenerateRandomCode()
     {
-        const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
-        int codeLength = Random.Range(3, 8);
+        const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int codeLength = Random.Range(3, 5);
         char[] codeArray = new char[codeLength];
 
         for (int i = 0; i < codeLength; i++)
