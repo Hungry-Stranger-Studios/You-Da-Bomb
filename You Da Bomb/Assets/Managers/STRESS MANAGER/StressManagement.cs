@@ -33,7 +33,6 @@ public class StressManagement : MonoBehaviour
         Instance = this;
 
         originalPosition = this.transform.position;
-        Debug.Log(originalPosition);
         stressLevel = Mathf.Clamp(stressLevel, 1, maxStressLevel);
         UpdateStressMeterUI();
     }

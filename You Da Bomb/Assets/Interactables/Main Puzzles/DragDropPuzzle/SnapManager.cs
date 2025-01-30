@@ -25,7 +25,6 @@ public class SnapManager : MonoBehaviour
         }
         DragDropMain.Solved();
         hasWon = true;
-        Debug.Log("SUCCESS");
     }
 
 }

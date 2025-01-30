@@ -253,8 +253,6 @@ public class GridManager : MonoBehaviour
                 int gridX = position.x + x;
                 int gridY = position.y + y;
 
-                Debug.Log($"{gridX} and {gridY}");
-
                 if (gridConstant[gridX, gridY] != null && gridConstant[gridX, gridY].Puzzle != null)
                 {
                     return false;

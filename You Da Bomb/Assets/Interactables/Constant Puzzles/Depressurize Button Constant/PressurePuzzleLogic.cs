@@ -41,9 +41,7 @@ public class PressurePuzzleLogic : PuzzleBase
     }
     public void DecreasePressure()
     {
-        Debug.Log("Pressure Decreased");
         Pressure -= decAmount;
-        Debug.Log(Pressure);
 
         if( Pressure < 0 )
         {
@@ -61,7 +59,6 @@ public class PressurePuzzleLogic : PuzzleBase
             {
                 Pressure = MaxPressure;
                 StressManagement.Instance.AdjustStress(100.0f);
-                Debug.Log("Game Over");
             }
             PressureBar.fillAmount = Pressure / MaxPressure;       
     }

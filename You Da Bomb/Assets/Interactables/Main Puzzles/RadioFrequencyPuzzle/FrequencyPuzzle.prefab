@@ -52,7 +52,7 @@ MonoBehaviour:
   minFrequency: 100
   maxFrequency: 2000
   targetFrequency: 440
-  tolerance: 20
+  tolerance: 30
   staticAudio: {fileID: 4950794693933622097}
   songAudio: {fileID: 7372616974883892171}
   requiredHoldTime: 1
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_SortingLayerID: -907003529
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cefbed4eea8866249bee87408183348d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acff56cbdc842f3468169f945d513533, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

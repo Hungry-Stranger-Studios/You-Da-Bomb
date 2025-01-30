@@ -42,13 +42,13 @@ public class SimpleMathPuzzle : PuzzleBase
         // Configure Grid Layout
         GridLayoutGroup gridLayout = gridGO.AddComponent<GridLayoutGroup>();
         gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        gridLayout.constraintCount = 3;
-        gridLayout.cellSize = new Vector2(35, 35);
+        gridLayout.constraintCount = 2;
+        gridLayout.cellSize = new Vector2(45, 40);
         gridLayout.spacing = new Vector2(2, 2);
 
         RectTransform gridRectTransform = gridGO.GetComponent<RectTransform>();
         gridRectTransform.localScale = new Vector3(0.015f, 0.015f, 1f);
-        gridRectTransform.anchoredPosition = new Vector2(-1.4f, 0.15f);
+        gridRectTransform.anchoredPosition = new Vector2(transform.position.x - 0.2f, transform.position.y + 0.25f); //Adjust to new position
         gridRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         gridRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         gridRectTransform.pivot = new Vector2(0.5f, 0.5f);
@@ -92,7 +92,7 @@ public class SimpleMathPuzzle : PuzzleBase
         }
 
         // Assign buttons
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject newButton = Instantiate(buttonPrefab, gridTransform);
 
@@ -101,7 +101,7 @@ public class SimpleMathPuzzle : PuzzleBase
 
             if (buttonText != null)
             {
-                buttonText.fontSize = 12;
+                buttonText.fontSize = 20;
                 buttonText.text = "";
             }
 
@@ -187,10 +187,6 @@ public class SimpleMathPuzzle : PuzzleBase
             {
                 OnCorrectAnswer();
             }
-            else
-            {
-                OnWrongAnswer();
-            }
         }
         else
         {
@@ -200,14 +196,7 @@ public class SimpleMathPuzzle : PuzzleBase
 
     private void OnCorrectAnswer()
     {
-        Debug.Log("Correct Answer! Puzzle Solved!");
         Solved();
-    }
-
-    private void OnWrongAnswer()
-    {
-        Debug.Log("Wrong Answer! Try again.");
-        // Do nothing on wrong answer
     }
 
     public override void Solved()
