@@ -2749,7 +2749,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3595450031627658458, guid: 900dc71eb966f514ab24270a70777a21, type: 3}
       propertyPath: stressLevel
-      value: 99
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3595450031627658458, guid: 900dc71eb966f514ab24270a70777a21, type: 3}
       propertyPath: GameOverScript
