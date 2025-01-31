@@ -135,6 +135,7 @@ public class GridManager : MonoBehaviour
             if (placementPosition.HasValue)
             {
                 PlacePuzzle(puzzle, placementPosition.Value);
+                Debug.Log((puzzle.GetType()));
             }
             else
             {
