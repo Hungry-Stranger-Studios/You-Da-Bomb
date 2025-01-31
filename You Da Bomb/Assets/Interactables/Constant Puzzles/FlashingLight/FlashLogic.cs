@@ -199,7 +199,7 @@ public class FlashLogic : PuzzleBase
     {
         if(L1Fail && L2Fail && L3Fail)
         {
-            StressManagement.Instance.AdjustStress(50.0f);
+            StressManagement.Instance.AdjustStress(20.0f);
         }
     }
 }
