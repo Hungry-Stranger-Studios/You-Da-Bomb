@@ -2133,10 +2133,7 @@ PrefabInstance:
     - {fileID: 8084951946672831504, guid: 4c0445947f37e3849969ce034a4953e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8151201070395313128, guid: 4c0445947f37e3849969ce034a4953e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2091016728}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c0445947f37e3849969ce034a4953e1, type: 3}
 --- !u!1 &1419186499 stripped
 GameObject:
@@ -2762,6 +2759,10 @@ PrefabInstance:
       propertyPath: gameOverScript
       value: 
       objectReference: {fileID: 1579472606}
+    - target: {fileID: 3595450031627658458, guid: 900dc71eb966f514ab24270a70777a21, type: 3}
+      propertyPath: puzzleScaleEffect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7163467570919523921, guid: 900dc71eb966f514ab24270a70777a21, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
