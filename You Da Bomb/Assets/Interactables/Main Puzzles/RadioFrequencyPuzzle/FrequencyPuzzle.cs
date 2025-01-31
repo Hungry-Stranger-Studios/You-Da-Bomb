@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FrequencyPuzzle : PuzzleBase
 {
+    [Header("Radio Stats")]
     [SerializeField] private Transform dial;
     [SerializeField] private float minFrequency = 100f;
     [SerializeField] private float maxFrequency = 2000f;
@@ -12,6 +13,11 @@ public class FrequencyPuzzle : PuzzleBase
     [SerializeField] private AudioSource staticAudio;
     [SerializeField] private AudioSource songAudio;
     [SerializeField] private float requiredHoldTime = 1f;
+
+    [Header("Light Sprites")]
+    [SerializeField] private GameObject statusLight;
+    [SerializeField] private Sprite lightOn;
+    [SerializeField] private Sprite lightOff;
 
     private float currentFrequency;
     private float timer;
@@ -65,6 +71,7 @@ public class FrequencyPuzzle : PuzzleBase
         if (Mathf.Abs(currentFrequency - targetFrequency) <= tolerance)
         {
             timer += Time.deltaTime;
+            statusLight.GetComponent<SpriteRenderer>().sprite = lightOn;
 
             //Correct frequency for long enough
             if (timer >= requiredHoldTime)
@@ -77,6 +84,7 @@ public class FrequencyPuzzle : PuzzleBase
         {
             //Not correct frequency
             timer = 0f;
+            statusLight.GetComponent<SpriteRenderer>().sprite = lightOff;
         }
     }
 
@@ -121,6 +129,7 @@ public class FrequencyPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
         staticAudio.Stop();
         songAudio.Stop();

@@ -42,7 +42,6 @@ public class Snap : MonoBehaviour
         {
             draggable.transform.position = new Vector3(closestSnapPoint.position.x, closestSnapPoint.position.y, closestSnapPoint.position.z - 0.1f);
             isCorrectlySnapped = true;
-            Debug.Log($"Snap Point: {closestSnapPoint.position} and Draggable: {draggable.transform.position}");
         }
         else
         {
