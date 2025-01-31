@@ -3,7 +3,9 @@ guid: bd9e95444f88c414ba8aa50cc46aeb21
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buttonPrefab: {fileID: 5474293111151643745, guid: 43d5210025eac394f81ea70a3cacd4ad, type: 3}
+  - textFont: {fileID: 11400000, guid: ae8b6c51a9d99d2429902e123659c391, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

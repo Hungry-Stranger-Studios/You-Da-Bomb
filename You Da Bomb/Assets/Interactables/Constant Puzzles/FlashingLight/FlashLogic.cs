@@ -9,6 +9,8 @@ public class FlashLogic : PuzzleBase
     [SerializeField] private GameObject lightbulb1;
     [SerializeField] private GameObject lightbulb2;
     [SerializeField] private GameObject lightbulb3;
+    [SerializeField] private Sprite lightOnSprite;
+    [SerializeField] private Sprite lightOffSprite;
     public int TBF; //Time Between Flashes
     public bool isFlashing1;
     public bool button1clicked;
@@ -68,7 +70,7 @@ public class FlashLogic : PuzzleBase
 
             //start flashing
             isFlashing1 = true;
-            lightrenderer1.color = Color.red;
+            lightrenderer1.sprite = lightOnSprite;
             button1clicked = false;
             bool taskCompleted = false;
 
@@ -78,8 +80,7 @@ public class FlashLogic : PuzzleBase
                 if (button1clicked)
                 {
                     taskCompleted = true;
-                    Debug.Log("Crisis averted");
-                    lightrenderer1.color = Color.green;
+                    lightrenderer1.sprite = lightOffSprite;
                     break;
                 }
                 timer -= Time.deltaTime;
@@ -89,11 +90,10 @@ public class FlashLogic : PuzzleBase
             if(!taskCompleted)
             {
                 L1Fail = true;
-                Debug.Log("Lightbulb1 failed");
             }
 
             isFlashing1 = false;
-            lightrenderer1.color = Color.green;
+            lightrenderer1.sprite = lightOffSprite;
         }
     }
 
@@ -107,7 +107,7 @@ public class FlashLogic : PuzzleBase
 
             //start flashing
             isFlashing2 = true;
-            lightrenderer2.color = Color.red;
+            lightrenderer2.sprite = lightOnSprite;
             button2clicked = false;
             bool taskCompleted = false;
 
@@ -117,8 +117,7 @@ public class FlashLogic : PuzzleBase
                 if (button2clicked)
                 {
                     taskCompleted = true;
-                    Debug.Log("Crisis averted");
-                    lightrenderer2.color = Color.green;
+                    lightrenderer2.sprite = lightOffSprite;
                     break;
                 }
                 timer -= Time.deltaTime;
@@ -128,11 +127,10 @@ public class FlashLogic : PuzzleBase
             if (!taskCompleted)
             {
                 L2Fail = true;
-                Debug.Log("Lightbulb2 failed");
             }
 
             isFlashing2 = false;
-            lightrenderer2.color = Color.green;
+            lightrenderer2.sprite = lightOffSprite;
         }
     }
 
@@ -146,7 +144,7 @@ public class FlashLogic : PuzzleBase
 
             //start flashing
             isFlashing3 = true;
-            lightrenderer3.color = Color.red;
+            lightrenderer3.sprite = lightOnSprite;
             button3clicked = false;
             bool taskCompleted = false;
 
@@ -156,8 +154,7 @@ public class FlashLogic : PuzzleBase
                 if (button3clicked)
                 {
                     taskCompleted = true;
-                    Debug.Log("Crisis averted");
-                    lightrenderer3.color = Color.green;
+                    lightrenderer3.sprite = lightOffSprite;
                     break;
                 }
                 timer -= Time.deltaTime;
@@ -167,11 +164,10 @@ public class FlashLogic : PuzzleBase
             if (!taskCompleted)
             {
                 L3Fail = true;
-                Debug.Log("Lightbulb3 failed");
             }
 
             isFlashing3 = false;
-            lightrenderer3.color = Color.green;
+            lightrenderer3.sprite = lightOffSprite;
         }
     }
 
@@ -180,11 +176,6 @@ public class FlashLogic : PuzzleBase
         if (isFlashing1)
         {
             button1clicked = true;
-            Debug.Log("Button 1 clicked in time!");
-        }
-        else
-        {
-            Debug.Log("Button 1 clicked, but not during a flashing period.");
         }
     }
 
@@ -193,11 +184,6 @@ public class FlashLogic : PuzzleBase
         if (isFlashing2)
         {
             button2clicked = true;
-            Debug.Log("Button 2 clicked in time!");
-        }
-        else
-        {
-            Debug.Log("Button 2 clicked, but not during a flashing period.");
         }
     }
 
@@ -206,11 +192,6 @@ public class FlashLogic : PuzzleBase
         if (isFlashing3)
         {
             button3clicked = true;
-            Debug.Log("Button 3 clicked in time!");
-        }
-        else
-        {
-            Debug.Log("Button 3 clicked, but not during a flashing period.");
         }
     }
 
@@ -218,8 +199,7 @@ public class FlashLogic : PuzzleBase
     {
         if(L1Fail && L2Fail && L3Fail)
         {
-            StressManagement.Instance.AdjustStress(25.0f);
-            Debug.Log("Game Over");
+            StressManagement.Instance.AdjustStress(50.0f);
         }
     }
 }

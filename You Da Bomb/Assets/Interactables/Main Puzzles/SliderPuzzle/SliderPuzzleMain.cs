@@ -23,9 +23,8 @@ public class Test : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
-        //Destroy(GameObject.FindWithTag("SliderPuzzle"));
-        Debug.Log("Solved() has been called");
         Destroy(this.gameObject);
     }
 }

@@ -20,7 +20,7 @@ public class NumberCountPuzzle : PuzzleBase
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private GameObject gridPrefab;
 
-    private Transform gridTransform;
+    public Transform gridTransform;
 
     private void Awake()
     {
@@ -144,10 +144,10 @@ public class NumberCountPuzzle : PuzzleBase
     {
         foreach (Transform child in gridTransform)
         {
-            Button button = child.GetComponent<Button>();
+            UnityEngine.UI.Button button = child.GetComponent<UnityEngine.UI.Button>();
             if (button != null)
             {
-                button.GetComponent<Image>().color = new Color32(244, 193, 18, 255);
+                button.GetComponent<Image>().color = Color.white;
             }
         }
     }
@@ -155,6 +155,7 @@ public class NumberCountPuzzle : PuzzleBase
     public override void Solved()
     {
         base.Solved();
+        GridManager.Instance.OnPuzzleFinished(puzzleLocation, false);
         StressManagement.Instance.AdjustStress(-5.0f);
         Destroy(this.gameObject);
     }
