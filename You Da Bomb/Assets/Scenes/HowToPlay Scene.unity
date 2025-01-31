@@ -179,12 +179,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to You Da'' Bomb!
-
-    You are a bomb over a testing facility,
-    and you have to keep yourself from exploding! Components of your circuitry will
-    keep appearing and you have to solve the puzzles to disarm them in time. Try
-    them out down here!'
+  m_text: "Welcome to You Da' Bomb!\n\nYou\u2019re a bomb suspended over a testing
+    facility, and your mission is to keep yourself from detonating! As new components
+    of your circuitry appear, you\u2019ll need to solve the puzzles quickly to disarm
+    them in time. Give it your best shot and see how long you can last!\n\nBe sure
+    to watch for those bottom two puzzles! They won't disappear like the rest and
+    will only continue to get harder as the game goes on, so watch out!\n\n(Note:
+    Puzzle previews are no longer available, so dive in and face the challenge head-on!)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
